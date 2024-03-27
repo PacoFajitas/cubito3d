@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 15:15:34 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/05/13 22:07:11 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/03/17 05:11:53 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**ft_actual_split(char const *s, char c, char **ret, int j)
 		{
 			i++;
 			s++;
-		}		
+		}
 		if (i != 0)
 		{
 			ret[j] = ft_substr(s - i, 0, i);

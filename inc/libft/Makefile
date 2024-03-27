@@ -6,7 +6,7 @@
 #    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/08 21:15:02 by tfiguero          #+#    #+#              #
-#    Updated: 2023/05/22 18:33:12 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/03/23 17:53:48 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,19 +47,8 @@ SRCS	=	ft_atoi.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c 
-
-BONUS_S = 	ft_lstnew_bonus.c\
-			ft_lstadd_front_bonus.c\
-			ft_lstsize_bonus.c\
-			ft_lstlast_bonus.c\
-			ft_lstadd_back_bonus.c\
-			ft_lstdelone_bonus.c\
-			ft_lstclear_bonus.c\
-			ft_lstiter_bonus.c\
-			ft_lstmap_bonus.c
-
-BONUS_O	= 	$(BONUS_S:.c=.o)
+			ft_putnbr_fd.c \
+			ft_strcmp.c
 
 OBJS	= 	$(SRCS:.c=.o)
 
@@ -82,17 +71,11 @@ $(NAME)::
 
 all: $(NAME)
 
-bonus: .bonus
-
-.bonus:	$(NAME) $(BONUS_O) $(HEADER)
-	$(LIBC) $(NAME) $(BONUS_O)
-	touch .bonus
-
 fclean: clean
-	$(RM) $(NAME) .bonus
+	$(RM) $(NAME)
 
 clean:
-	$(RM) $(OBJS) $(BONUS_O)
+	$(RM) $(OBJS)
 
 re: fclean all
 

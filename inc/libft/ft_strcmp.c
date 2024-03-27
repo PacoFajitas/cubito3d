@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/04 11:06:40 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/03/17 05:04:19 by tfiguero         ###   ########.fr       */
+/*   Created: 2024/02/14 04:26:14 by tfiguero          #+#    #+#             */
+/*   Updated: 2024/03/17 05:11:30 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_tolower(char *x)
+int	ft_strcmp(char *ehe, char *cmp)
 {
 	int	i;
 
 	i = 0;
-	while (x[i])
+	while (ehe[i] && cmp[i])
 	{
-		if (x[i] >= 65 && x[i] <= 90)
-			x[i] = x[i] + 32;
+		if (ehe[i] != cmp[i])
+			return (ehe[i] - cmp[i]);
 		i++;
 	}
-	return (x);
+	if ((ehe[i] && !cmp[i]) || (cmp[i] && !ehe[i]))
+		return (ehe[i] - cmp[i]);
+	return (0);
 }

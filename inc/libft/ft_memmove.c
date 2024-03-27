@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 17:06:46 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/05/10 21:37:03 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/03/17 05:12:08 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_memmove(void *dst, const void*src, size_t len)
 		{
 			((unsigned char *) dst)[i] = ((unsigned char *) src)[i];
 			i--;
-		}		
+		}
 	}
 	else
 	{

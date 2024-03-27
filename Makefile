@@ -6,61 +6,77 @@
 #    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/03/27 14:50:10 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/03/27 17:38:56 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = cub3D
+NAME		= cub3D
+INC_DIR		= inc
+LIB_DIR		= inc
+MKFL		= Makefile
+SRC_DIR		= srcs/
+OBJ_DIR		= objs/
 
-FILES = main
-SRC = $(addsuffix .c, $(FILES))
-vpath %.c srcs
+MLX			= libmlx.a
 
-HEADER = inc/cub3d.h
+INC_MLX		= mlx.h
 
-OBJ_DIR = objs
-OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
-DEP = $(addsuffix .d, $(basename $(OBJ))) 
+MLX_DIR		= inc/mlx
+	MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+	MLX_FLAGS	= -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm
+	MLX_CC		= -I/usr/include -I$(MLX_DIR)
+	LIB_M 		= $(LIB_DIR)/mlx/
+	
+# ----Libraryes----
+PW_HEADER	= $(INC_DIR)/cub3D.h
+LIB			= $(LIB_DIR)/libft/libft.a
+LIB_L 		= $(LIB_DIR)/libft/
+# -------------
+RM = rm -rf
+MP = mkdir -p
+CFLAGS = -g -Wall -Wextra -Werror
+LIBC = ar -rcs
+CC = clang
+# =============
 
-MLX_DIR = inc/mlx
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+SRC_L	=	main.c					\
 
-LIBFT_DIR = inc/libft
-LIBFT = inc/libft/libft.a
+SRC = $(addprefix $(SRC_DIR), $(SRC_L))
 
-RM = rm -f
-CC = cc
-CFLAGS = -Werror -Wextra -Wall #-g -fsanitize=address
-
-$(OBJ_DIR)/%.o: %.c ${HEADER}  Makefile
-	@mkdir -p $(@D)
-	@${CC} $(CFLAGS) -Imlx -MMD -c $< -o $@
+# -------------
+OBJ = $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+DEP = $(addsuffix .d, $(basename $(OBJ)))
+# =============
 
 all:
-	@$(MAKE) -C $(MLX_DIR) --no-print-directory
-	@$(MAKE) -C $(LIBFT_DIR) --no-print-directory
-	$(MAKE) $(NAME) --no-print-directory
+	@$(MAKE) -C $(LIB_L) --no-print-directory
+	@$(MAKE) -C $(LIB_M) --no-print-directory
+	@$(MAKE) $(NAME) --no-print-directory
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) $(LIBFT) -g -fsanitize=address -o -O3 $(NAME)
-	@echo "EVERYTHING DONE  "
+$(OBJ_DIR)%.o: %.c $(MKFL)
+	@$(MP) $(dir $@)
+	@$(CC) $(CFLAGS) -MMD -I $(INC_DIR) $(MLX_CC) -c $< -o $@
 
-clean:
-	$(MAKE) clean -C $(MLX_DIR) --no-print-directory
-	$(MAKE) clean -C $(LIBFT_DIR) --no-print-directory
-	$(RM) $(OBJ) $(DEP) --no-print-directory
-	$(RM) -r $(OBJ_DIR) --no-print-directory
-	@echo "OBJECTS REMOVED   "
+$(NAME):: $(OBJ) $(LIB)
+	@$(CC)  $(CFLAGS) $(OBJ) $(LIB) $(MLX_FLAGS) -o $(NAME)
 
-fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR) --no-print-directory
-	$(RM) $(NAME) --no-print-directory
-	@echo "EVERYTHING REMOVED   "
-
-re:	fclean all
-
-.PHONY: all clean fclean re
+$(NAME)::
+	@echo "Hello, cub3d already compiled "
 
 -include $(DEP)
 
-#########
+clean:
+	@$(MAKE) clean -C $(LIB_M) --no-print-directory
+	@$(MAKE) clean -C $(LIB_L) --no-print-directory
+	$(RM) $(OBJ_DIR)
+
+fclean: clean
+	@$(MAKE) fclean -C $(LIB_L) --no-print-directory
+	@$(MAKE) clean -C $(LIB_M) --no-print-directory
+	$(RM) $(NAME)
+
+re:
+	@$(MAKE) fclean --no-print-directory
+	@$(MAKE) --no-print-directory
+
+.PHONY: all clean fclean re

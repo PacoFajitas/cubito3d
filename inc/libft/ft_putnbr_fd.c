@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 04:05:57 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/05/12 04:46:50 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/03/17 05:12:03 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ void	ft_putnbr_fd(int n, int fd)
 	if (n < 10)
 	{
 		ft_putchar_fd((char)(n + 48), fd);
-	}	
+	}
 }

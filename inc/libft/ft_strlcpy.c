@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 21:31:12 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/05/12 05:09:46 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/03/17 05:05:47 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 			i++;
 		}
 		dst[i] = '\0';
-	}	
+	}
 	return (ft_strlen(src));
 }
 

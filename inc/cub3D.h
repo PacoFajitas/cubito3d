@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/03/27 21:38:58 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/03/28 19:43:09 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_gen
 	char	*f;
 	char	*c;
 	int		**map;
+	int		height;
+	int		width;
 }				t_gen;
 
 char	*get_next_line(int fd);

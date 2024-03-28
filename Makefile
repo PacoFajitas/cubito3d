@@ -6,7 +6,7 @@
 #    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/03/27 17:38:56 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/03/28 20:58:15 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INC_MLX		= mlx.h
 
 MLX_DIR		= inc/mlx
 	MLX_FLAGS	= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-	MLX_FLAGS	= -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm
+	# MLX_FLAGS	= -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -I$(MLX_DIR) -lXext -lX11 -lm
 	MLX_CC		= -I/usr/include -I$(MLX_DIR)
 	LIB_M 		= $(LIB_DIR)/mlx/
 	
@@ -40,6 +40,8 @@ CC = clang
 # =============
 
 SRC_L	=	main.c					\
+			get_next_line.c			\
+			get_next_line_utils.c	\
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_L))
 

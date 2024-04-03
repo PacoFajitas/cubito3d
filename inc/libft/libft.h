@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:55:08 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/03/28 20:56:38 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:39:17 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,5 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_strcmp(char *ehe, char *cmp);
 char	*ft_strjoinfree(char *s1, char *s2);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
 #endif

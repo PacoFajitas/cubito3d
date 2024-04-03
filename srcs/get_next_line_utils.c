@@ -6,23 +6,14 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:44:01 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/03/27 20:18:20 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/03 16:43:09 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include "../inc/libft/libft.h"
 
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr_l(char *s, unsigned int start, size_t len)
 {
 	char	*str;
 	size_t	i;
@@ -48,7 +39,7 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (str);
 }
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strchr_l(const char *s, int c)
 {
 	int	i;
 
@@ -62,7 +53,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *ret, char *s2)
+char	*ft_strjoin_l(char *ret, char *s2)
 {
 	size_t	i;
 	size_t	j;

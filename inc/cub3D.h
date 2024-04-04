@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/03 16:39:52 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:40:10 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,7 @@ size_t	ft_strlen(const char *s);
 char	*ft_clean_buffer(char *data);
 char	*ft_fill_data(char *data, int fd, int flag);
 char	*ft_free(char **buffer);
+/*	print_utils.c	*/
+void 	ft_print_array(char **array, int i);
+void	ft_print_data(t_gen *data);
 #endif

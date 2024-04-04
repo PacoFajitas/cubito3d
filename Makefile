@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
+#    By: meri <meri@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/03 17:29:59 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/04/04 16:37:18 by meri             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ CC = clang
 SRC_L	=	main.c					\
 			get_next_line.c			\
 			get_next_line_utils.c	\
+			print_utils.c			\
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_L))
 

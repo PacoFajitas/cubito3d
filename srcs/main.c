@@ -6,12 +6,13 @@
 /*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/04 18:31:36 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/04 18:33:36 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3D.h"
 
+//esto creo que no hace ni mierdas pq no esta mallokiado
 int	ft_get_map(t_gen *gen, int i, int j)
 {
 	int x;

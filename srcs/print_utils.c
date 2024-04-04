@@ -6,7 +6,7 @@
 /*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:33:50 by meri              #+#    #+#             */
-/*   Updated: 2024/04/04 17:05:16 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/04 18:22:24 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void ft_print_array(char **array, int i)
 {
-	while (array[i])
+	while (array && array[i])
 	{
 		ft_putstr_fd(array[i], 1);
 		i++;
@@ -41,4 +41,9 @@ void	ft_print_data(t_gen *data)
 	ft_putstr_fd("\ndata->c::", 1);
 	if (data->c)
 		ft_putstr_fd(data->c, 1);
+	ft_putstr_fd("\ndata->height::", 1);
+	ft_putnbr_fd(data->height, 1);
+	ft_putstr_fd("\ndata->width::", 1);
+	ft_putnbr_fd(data->width, 1);
+	ft_putchar_fd('\n', 1);
 }

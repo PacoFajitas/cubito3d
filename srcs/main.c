@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/04 18:33:36 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/06 01:21:16 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,43 +95,22 @@ int	ft_find_map_limits_2(t_gen *gen, int *i, int *j)
 	x = *i;
 	while (gen->file[x])
 	{
-		if (ft_strncmp(gen->file[x], "1", 1) && aux == 0)
-		{
-			gen->file[x] = ft_trim_final_spaces(gen->file[x]);
-			*i = x;
-			aux = 1;
-		}
-		else if (ft_strncmp(gen->file[x], "1", 1) && aux == 1)
-		{
-			gen->file[x] = ft_trim_final_spaces(gen->file[x]);
-			*j = x;
-		}
+		gen->map[aux] = ft_strdup(gen->file[x]);
+		aux++;
+		// if (ft_strchr(gen->file[x], '1') && aux == 0)
+		// {
+		// 	gen->file[x] = ft_trim_final_spaces(gen->file[x]);
+		// 	*i = x;
+		// 	aux = 1;
+		// }
+		// else if (ft_strchr(gen->file[x], '1') && aux == 1)
+		// {
+		// 	gen->file[x] = ft_trim_final_spaces(gen->file[x]);
+		// 	*j = x;
+		// }
 		x++;
 	}
 	gen->height = *j - *i;
-	gen->map = malloc(sizeof(int *) * (gen->height + 1));
-	if (!gen->map)
-		return(1);
-	x = *i;
-	while (x < gen->height)
-	{
-		if ((int)ft_strlen(gen->file[x]) > gen->width)
-			gen->width = ft_strlen(gen->file[x]);
-		x++;		
-	}
-	x = 0;
-	while (x < gen->height)
-	{
-		gen->map[x] = malloc(sizeof(int) * gen->width);
-		if(gen->map[x] == NULL)
-		{
-			while (x >= 0)
-				free(gen->map[x--]);
-			free(gen->map);
-			return(1);
-		}
-		x++;
-	}
 	return(0);
 }
 
@@ -381,11 +360,15 @@ int	ft_check_map(char *map, t_gen *gen)
 		return (1);
 	i = 0;
 	int j;
-	while(i < gen->height)
+	printf("height::%d\n", gen->height);
+	printf("width::%d\n", gen->width);
+	while(i < gen->height )
 	{
 		j = 0;
-		while (j < gen->width)
+		printf("%d::\n", i);
+		while (j < gen->width )
 		{
+			printf("%d::\n", j);
 			if (gen->map[i][j])
 				ft_putnbr_fd(gen->map[i][j], 1);
 			j++;

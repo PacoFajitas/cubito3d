@@ -6,59 +6,59 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/06 01:21:16 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/07 20:43:10 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3D.h"
 
 //esto creo que no hace ni mierdas pq no esta mallokiado
-int	ft_get_map(t_gen *gen, int i, int j)
-{
-	int x;
-	int y;
-	int k;
+// int	ft_get_map(t_gen *gen, int i, int j)
+// {
+// 	int x;
+// 	int y;
+// 	int k;
 	
-	x = 0;
-	y = 0;
-	k = 0;
-	while (i < j)
-	{
-		while (gen->file[i][k])
-		{
-			if (gen->file[i][k] == ' ' || gen->file[i][k] == '0')
-				gen->map[x][y] = 0;
-			else if (gen->file[i][k] == '1')
-				gen->map[x][y] = 1;
-			else if (gen->file[i][k] == '2')
-				gen->map[x][y] = 2;
-			else if (gen->file[i][k] == 'N' || gen->file[i][k] == 'S' 
-				|| gen->file[i][k] == 'W' || gen->file[i][k] == 'E')
-				gen->map[x][y] = gen->file[i][k];
-			else
-			{
-				ft_putstr_fd("invalid char is::", 1);
-				ft_putchar_fd(gen->file[i][j], 1);
-				dprintf(1, "pos i::%d  pos j::%d\n", i, j);
-				ft_putchar_fd('\n', 1);
-				ft_putstr_fd("Invalid character in map\n", 2);
-				return(1);
-			}
-			k++;
-			y++;
-		}
-		while (y < gen->width)
-		{
-			gen->map[x][y] = 0;
-			y++;
-		}
-		y = 0;
-		k = 0;
-		x++;
-		i++;
-	}
-	return(0);
-}
+// 	x = 0;
+// 	y = 0;
+// 	k = 0;
+// 	while (i < j)
+// 	{
+// 		while (gen->file[i][k])
+// 		{
+// 			if (gen->file[i][k] == ' ' || gen->file[i][k] == '0')
+// 				gen->map[x][y] = 0;
+// 			else if (gen->file[i][k] == '1')
+// 				gen->map[x][y] = 1;
+// 			else if (gen->file[i][k] == '2')
+// 				gen->map[x][y] = 2;
+// 			else if (gen->file[i][k] == 'N' || gen->file[i][k] == 'S' 
+// 				|| gen->file[i][k] == 'W' || gen->file[i][k] == 'E')
+// 				gen->map[x][y] = gen->file[i][k];
+// 			else
+// 			{
+// 				ft_putstr_fd("invalid char is::", 1);
+// 				ft_putchar_fd(gen->file[i][j], 1);
+// 				dprintf(1, "pos i::%d  pos j::%d\n", i, j);
+// 				ft_putchar_fd('\n', 1);
+// 				ft_putstr_fd("Invalid character in map\n", 2);
+// 				return(1);
+// 			}
+// 			k++;
+// 			y++;
+// 		}
+// 		while (y < gen->width)
+// 		{
+// 			gen->map[x][y] = 0;
+// 			y++;
+// 		}
+// 		y = 0;
+// 		k = 0;
+// 		x++;
+// 		i++;
+// 	}
+// 	return(0);
+// }
 //hacer que malloquee la nueva str y limpie la vieja
 char	*ft_trim_final_spaces(char *str)
 {
@@ -70,10 +70,16 @@ char	*ft_trim_final_spaces(char *str)
 	i = ft_strlen(str) - 1;
 	j = 0;
 	k = 0;
-	if (str[i] == '\n')
+	if (!str)
+		return(NULL);
+	if(ft_strlen(str) == 1)
+		return(str);
+	// ft_putstr_fd(str, 1);
+	while (str[i] == '\n')
 		i--;
 	while (str[i] && str[i] == ' ')
 		i--;
+	i += 1;
 	ret = malloc(i + 1);
 	while (str[k] && k < i)
 	{
@@ -85,32 +91,72 @@ char	*ft_trim_final_spaces(char *str)
 	free(str);
 	return(ret);
 }
+char	*ft_get_map_line(char	*str, int width)
+{
+	int		i;
+	int		j;
+	char	*ret;
 
-int	ft_find_map_limits_2(t_gen *gen, int *i, int *j)
+	i = 1;
+	j = 0;
+	ret = malloc(width + 1);
+	if (!ret)
+		return (NULL);
+	ret[0] = ' ';
+	while (i < width && str[j])
+	{
+		ret[i] = str[j];
+		i++;
+		j++;
+	}
+	while (i < width)
+	{
+		ret[i] = ' ';
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
+}
+char	*ft_put_spaces(int width)
+{
+	int i;
+	char *ret;
+	
+	i = 0;
+	ret = malloc(width + 1);
+	while (i < width)
+	{
+		ret[i] = ' ';
+		i++;
+	}
+	ret[i] = '\0';
+	return(ret);
+}
+
+int	ft_get_map(t_gen *gen, int *i)
 {
 	int	x;
 	int aux;
 
 	aux = 0;
 	x = *i;
+	gen->map = malloc(sizeof(char *) * (gen->height + 1));
+	gen->map[0] = ft_put_spaces(gen->width);
+	aux++;
 	while (gen->file[x])
 	{
-		gen->map[aux] = ft_strdup(gen->file[x]);
+		gen->map[aux] = ft_get_map_line(gen->file[x], gen->width);
+		// gen->map[aux] = ft_strdup("");
+		// gen->map[aux] = ft_strjoinfree(gen->map[aux], " ");
+		// gen->map[aux] = ft_strjoinfree(gen->map[aux], gen->file[x]);
+		// while((int)ft_strlen(gen->map[aux]) < gen->width)
+		// 	gen->map[aux] = ft_strjoinfree(gen->map[aux], " ");
 		aux++;
-		// if (ft_strchr(gen->file[x], '1') && aux == 0)
-		// {
-		// 	gen->file[x] = ft_trim_final_spaces(gen->file[x]);
-		// 	*i = x;
-		// 	aux = 1;
-		// }
-		// else if (ft_strchr(gen->file[x], '1') && aux == 1)
-		// {
-		// 	gen->file[x] = ft_trim_final_spaces(gen->file[x]);
-		// 	*j = x;
-		// }
 		x++;
 	}
-	gen->height = *j - *i;
+	gen->map[aux] = ft_put_spaces(gen->width);
+	aux++;
+	gen->map[aux] = NULL;
 	return(0);
 }
 
@@ -123,7 +169,6 @@ void	ft_find_map_limits(t_gen *gen, int i)
 	while (gen->file[i])
 	{
 		gen->file[i] = ft_trim_final_spaces(gen->file[i]);
-		dprintf(1, "/%s/\n", gen->file[i]);
 		if (i > gen->height)
 			gen->height =  i - initial_i;
 		j = 0;
@@ -135,6 +180,8 @@ void	ft_find_map_limits(t_gen *gen, int i)
 		}
 		i++;
 	}
+	gen->width += 3;
+	gen->height += 3;
 }
 
 char	*ft_clean_line(char *str)
@@ -221,9 +268,11 @@ int	ft_parse_map(t_gen *gen)
 	i = ft_find_info(gen, 0, 0, 0);
 	if (i == 0)
 		return(0);
+	while(gen->file[j] && gen->file[j][0] == '\n')
+		j++;
 	ft_find_map_limits(gen, i);
 	//ft_print_data(gen);
-	return(ft_get_map(gen, i, j));
+	return(ft_get_map(gen, &i));
 	
 }
 
@@ -358,23 +407,7 @@ int	ft_check_map(char *map, t_gen *gen)
 	close(fd);
 	if (ft_parse_map(gen))
 		return (1);
-	i = 0;
-	int j;
-	printf("height::%d\n", gen->height);
-	printf("width::%d\n", gen->width);
-	while(i < gen->height )
-	{
-		j = 0;
-		printf("%d::\n", i);
-		while (j < gen->width )
-		{
-			printf("%d::\n", j);
-			if (gen->map[i][j])
-				ft_putnbr_fd(gen->map[i][j], 1);
-			j++;
-		}	
-		i++;
-	}
+	ft_print_array(gen->map, 0);
 	return(0);
 }
 void	ft_init_gen(t_gen *gen)

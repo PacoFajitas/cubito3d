@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:33:50 by meri              #+#    #+#             */
-/*   Updated: 2024/04/04 18:22:24 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/07 19:20:41 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void ft_print_array(char **array, int i)
 {
 	while (array && array[i])
 	{
-		ft_putstr_fd(array[i], 1);
+		printf("|%s|\n", array[i]);
 		i++;
 	}
 }

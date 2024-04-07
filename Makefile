@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: meri <meri@student.42.fr>                  +#+  +:+       +#+         #
+#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/04 16:37:18 by meri             ###   ########.fr        #
+#    Updated: 2024/04/07 21:28:55 by mlopez-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,10 +39,15 @@ LIBC = ar -rcs
 CC = clang
 # =============
 
-SRC_L	=	main.c					\
+SRC_L	=	get_next_line_utils.c	\
 			get_next_line.c			\
-			get_next_line_utils.c	\
+			init.c					\
+			main.c					\
+			parse_info.c			\
+			parse_map.c				\
 			print_utils.c			\
+			utils_line.c			\
+			utils_tabs.c			\
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_L))
 

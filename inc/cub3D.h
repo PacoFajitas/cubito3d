@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/06 00:50:40 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/07 21:07:10 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_gen
 	char	**map;
 	int		height;
 	int		width;
-}				t_gen;
+}				t_map;
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *ret, char *s2);
@@ -45,5 +45,5 @@ char	*ft_fill_data(char *data, int fd, int flag);
 char	*ft_free(char **buffer);
 /*	print_utils.c	*/
 void 	ft_print_array(char **array, int i);
-void	ft_print_data(t_gen *data);
+void	ft_print_map_data(t_map *m);
 #endif

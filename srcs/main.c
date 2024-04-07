@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/07 20:43:10 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/07 21:06:11 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "cub3D.h"
 
 //esto creo que no hace ni mierdas pq no esta mallokiado
-// int	ft_get_map(t_gen *gen, int i, int j)
+// int	ft_get_map(t_map *m, int i, int j)
 // {
 // 	int x;
 // 	int y;
@@ -24,21 +24,21 @@
 // 	k = 0;
 // 	while (i < j)
 // 	{
-// 		while (gen->file[i][k])
+// 		while (m->file[i][k])
 // 		{
-// 			if (gen->file[i][k] == ' ' || gen->file[i][k] == '0')
-// 				gen->map[x][y] = 0;
-// 			else if (gen->file[i][k] == '1')
-// 				gen->map[x][y] = 1;
-// 			else if (gen->file[i][k] == '2')
-// 				gen->map[x][y] = 2;
-// 			else if (gen->file[i][k] == 'N' || gen->file[i][k] == 'S' 
-// 				|| gen->file[i][k] == 'W' || gen->file[i][k] == 'E')
-// 				gen->map[x][y] = gen->file[i][k];
+// 			if (m->file[i][k] == ' ' || m->file[i][k] == '0')
+// 				m->map[x][y] = 0;
+// 			else if (m->file[i][k] == '1')
+// 				m->map[x][y] = 1;
+// 			else if (m->file[i][k] == '2')
+// 				m->map[x][y] = 2;
+// 			else if (m->file[i][k] == 'N' || m->file[i][k] == 'S' 
+// 				|| m->file[i][k] == 'W' || m->file[i][k] == 'E')
+// 				m->map[x][y] = m->file[i][k];
 // 			else
 // 			{
 // 				ft_putstr_fd("invalid char is::", 1);
-// 				ft_putchar_fd(gen->file[i][j], 1);
+// 				ft_putchar_fd(m->file[i][j], 1);
 // 				dprintf(1, "pos i::%d  pos j::%d\n", i, j);
 // 				ft_putchar_fd('\n', 1);
 // 				ft_putstr_fd("Invalid character in map\n", 2);
@@ -47,9 +47,9 @@
 // 			k++;
 // 			y++;
 // 		}
-// 		while (y < gen->width)
+// 		while (y < m->width)
 // 		{
-// 			gen->map[x][y] = 0;
+// 			m->map[x][y] = 0;
 // 			y++;
 // 		}
 // 		y = 0;
@@ -133,55 +133,52 @@ char	*ft_put_spaces(int width)
 	return(ret);
 }
 
-int	ft_get_map(t_gen *gen, int *i)
+int	ft_get_map(t_map *m, int *i)
 {
 	int	x;
 	int aux;
 
 	aux = 0;
 	x = *i;
-	gen->map = malloc(sizeof(char *) * (gen->height + 1));
-	gen->map[0] = ft_put_spaces(gen->width);
+	m->map = malloc(sizeof(char *) * (m->height + 1));
+	m->map[0] = ft_put_spaces(m->width);
 	aux++;
-	while (gen->file[x])
+	while (aux < m->height - 2)
 	{
-		gen->map[aux] = ft_get_map_line(gen->file[x], gen->width);
-		// gen->map[aux] = ft_strdup("");
-		// gen->map[aux] = ft_strjoinfree(gen->map[aux], " ");
-		// gen->map[aux] = ft_strjoinfree(gen->map[aux], gen->file[x]);
-		// while((int)ft_strlen(gen->map[aux]) < gen->width)
-		// 	gen->map[aux] = ft_strjoinfree(gen->map[aux], " ");
+		m->map[aux] = ft_get_map_line(m->file[x], m->width);
 		aux++;
 		x++;
 	}
-	gen->map[aux] = ft_put_spaces(gen->width);
+	m->map[aux] = ft_put_spaces(m->width);
 	aux++;
-	gen->map[aux] = NULL;
+	m->map[aux] = NULL;
 	return(0);
 }
 
-void	ft_find_map_limits(t_gen *gen, int i)
+void	ft_find_map_limits(t_map *m, int i)
 {
 	int	j;
 	int initial_i;
 	
 	initial_i = i;
-	while (gen->file[i])
+	while (m->file[i])
 	{
-		gen->file[i] = ft_trim_final_spaces(gen->file[i]);
-		if (i > gen->height)
-			gen->height =  i - initial_i;
+		if (m->file[i][0] && m->file[i][0] == '\n')
+			break;
+		m->file[i] = ft_trim_final_spaces(m->file[i]);
+		if (i > m->height)
+			m->height =  i - initial_i;
 		j = 0;
-		while (gen->file[i] && gen->file[i][j])
+		while (m->file[i] && m->file[i][j])
 		{
-			if (j > gen->width)
-				gen->width = j;
+			if (j > m->width)
+				m->width = j;
 			j++;
 		}
 		i++;
 	}
-	gen->width += 3;
-	gen->height += 3;
+	m->width += 3;
+	m->height += 3;
 }
 
 char	*ft_clean_line(char *str)
@@ -231,48 +228,48 @@ char	*ft_get_fc(char *str, char c)
 	return (ret);
 }
 
-int	ft_find_info(t_gen *gen, int j, int line_len, int dot_len)
+int	ft_find_info(t_map *m, int j, int line_len, int dot_len)
 {
-	while (gen->file[j])
+	while (m->file[j])
 	{
-		gen->file[j] = ft_clean_line(gen->file[j]);
-		line_len = ft_strlen(gen->file[j]);
-		dot_len = ft_strlen(ft_strchr(gen->file[j], '.'));
-		if(!ft_strncmp(gen->file[j], "NO", 2))
-			gen->no = ft_substr(gen->file[j], line_len - dot_len, dot_len);
-		else if(!ft_strncmp(gen->file[j], "SO", 2))
-			gen->so = ft_substr(gen->file[j], line_len - dot_len, dot_len);
-		else if(!ft_strncmp(gen->file[j], "WE", 2))
-			gen->we = ft_substr(gen->file[j], line_len - dot_len, dot_len);
-		else if(!ft_strncmp(gen->file[j], "EA", 2))
-			gen->ea = ft_substr(gen->file[j], line_len - dot_len, dot_len);
-		else if(!ft_strncmp(gen->file[j], "F", 1))
-			gen->f = ft_get_fc(gen->file[j], 'F');
-		else if(!ft_strncmp(gen->file[j], "C", 1))
-			gen->c = ft_get_fc(gen->file[j], 'C');
+		m->file[j] = ft_clean_line(m->file[j]);
+		line_len = ft_strlen(m->file[j]);
+		dot_len = ft_strlen(ft_strchr(m->file[j], '.'));
+		if(!ft_strncmp(m->file[j], "NO", 2))
+			m->no = ft_substr(m->file[j], line_len - dot_len, dot_len);
+		else if(!ft_strncmp(m->file[j], "SO", 2))
+			m->so = ft_substr(m->file[j], line_len - dot_len, dot_len);
+		else if(!ft_strncmp(m->file[j], "WE", 2))
+			m->we = ft_substr(m->file[j], line_len - dot_len, dot_len);
+		else if(!ft_strncmp(m->file[j], "EA", 2))
+			m->ea = ft_substr(m->file[j], line_len - dot_len, dot_len);
+		else if(!ft_strncmp(m->file[j], "F", 1))
+			m->f = ft_get_fc(m->file[j], 'F');
+		else if(!ft_strncmp(m->file[j], "C", 1))
+			m->c = ft_get_fc(m->file[j], 'C');
 		j++;
-		if (gen->no && gen->so && gen->we && gen->ea && gen->f && gen->c)
+		if (m->no && m->so && m->we && m->ea && m->f && m->c)
 			break ;
 	}
-	if (!gen->no || !gen->so || !gen->we || !gen->ea || !gen->f || !gen->c)
+	if (!m->no || !m->so || !m->we || !m->ea || !m->f || !m->c)
 		return(0);
 	return(j);
 }
 
-int	ft_parse_map(t_gen *gen)
+int	ft_parse_map(t_map *m)
 {
 	int	i;
 	int j;
 	
 	j = 0;
-	i = ft_find_info(gen, 0, 0, 0);
+	i = ft_find_info(m, 0, 0, 0);
 	if (i == 0)
 		return(0);
-	while(gen->file[j] && gen->file[j][0] == '\n')
-		j++;
-	ft_find_map_limits(gen, i);
-	//ft_print_data(gen);
-	return(ft_get_map(gen, &i));
+	while (m->file[i] && m->file[i][0] && m->file[i][0] == '\n')
+		i++;
+	ft_find_map_limits(m, i);
+	//ft_print_data(m);
+	return(ft_get_map(m, &i));
 	
 }
 
@@ -352,35 +349,35 @@ int	ft_count_lines(int fd)
 	return(i);
 }
 
-void	ft_readfile(int fd, t_gen *gen, int j)
+void	ft_readfile(int fd, t_map *m, int j)
 {
 	char *line;
 	int i;
 	
 	i = 0;
-	gen->file = malloc(sizeof(char *) * (j + 1));
+	m->file = malloc(sizeof(char *) * (j + 1));
 	line = get_next_line(fd);
 	while (line > 0)
 	{
 		line = ft_expand_tabs(line);
 		line = ft_strjoinfree(line, NULL);
-		gen->file[i] = ft_strdup(line);
+		m->file[i] = ft_strdup(line);
 		free(line);
-		if (!gen->file[i])
+		if (!m->file[i])
 		{
 			while (i >= 0)
-				free(gen->file[i--]);//Liberar todo gen
+				free(m->file[i--]);//Liberar todo m
 			perror("malloc");
 			exit(1);
 		}
 		i++;
 		line = get_next_line(fd);
 	}
-	gen->file[i] = NULL;
+	m->file[i] = NULL;
 	free(line);	
 }
 
-int	ft_check_map(char *map, t_gen *gen)
+int	ft_check_map(char *map, t_map *m)
 {
 	int fd;
 	int i;
@@ -403,40 +400,40 @@ int	ft_check_map(char *map, t_gen *gen)
 		perror("fd");
 		exit(1);
 	}
-	ft_readfile(fd, gen, i);
+	ft_readfile(fd, m, i);
 	close(fd);
-	if (ft_parse_map(gen))
+	if (ft_parse_map(m))
 		return (1);
-	ft_print_array(gen->map, 0);
+	ft_print_array(m->map, 0);
 	return(0);
 }
-void	ft_init_gen(t_gen *gen)
+void	ft_init_map(t_map *m)
 {
-	gen->no = NULL;
-	gen->so = NULL;
-	gen->we = NULL;
-	gen->ea = NULL;
-	gen->f = NULL;
-	gen->c = NULL;
-	gen->map = NULL;
-	gen->file = NULL;
-	gen->height = 0;
-	gen->width = 0;
+	m->no = NULL;
+	m->so = NULL;
+	m->we = NULL;
+	m->ea = NULL;
+	m->f = NULL;
+	m->c = NULL;
+	m->map = NULL;
+	m->file = NULL;
+	m->height = 0;
+	m->width = 0;
 }
 
 int main(int argc, char **argv)
 {
-	t_gen gen;
+	t_map m;
 	
 	if (argc != 2)
 	{
 		ft_putstr_fd("Please choose a map\n", 2);
 		return(1);
 	}
-	ft_init_gen(&gen);
-	if(ft_check_map(argv[1], &gen))
+	ft_init_map(&m);
+	if(ft_check_map(argv[1], &m))
 	{
-		//ft_free_gen(&gen);
+		//ft_free_m(&m);
 		return(1);
 	}
 	return(0);

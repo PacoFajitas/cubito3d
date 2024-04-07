@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/07 21:35:56 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/07 21:54:05 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ int main(int argc, char **argv)
 		//ft_free_m(&m);
 		return (1);
 	}
-	if (!ft_parse_info(&m))
+	if (!ft_check_valid_map(&m, 1, 1, 0))
 	{
 		ft_putstr_fd("Error\n", 2);
 		//ft_free_m(&m);
 		return (1);
 	}
-	ft_print_map_data(&m);
-	ft_print_array(m.map, 0);
+	// ft_print_map_data(&m);
+	// ft_print_array(m.map, 0);
 	return(0);
 }

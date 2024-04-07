@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:05:03 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/07 21:34:53 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/07 21:54:20 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_get_map(t_map *m, int *i)
 		return (0);
 	m->map[0] = ft_put_spaces(m->width);
 	aux++;
-	while (aux < m->height - 2)
+	while (aux < m->height - 1)
 	{
 		m->map[aux] = ft_get_map_line(m->file[x], m->width, 1, 0);
 		aux++;
@@ -83,6 +83,28 @@ int	ft_get_map(t_map *m, int *i)
 	aux++;
 	m->map[aux] = NULL;
 	return(1);
+}
+
+int	ft_check_valid_map2(t_map *m, int i, int j, int player)
+{
+	player = 0;
+	while (i < m->height - 1)
+	{
+		j = 1;
+		while (j < m->width - 1)
+		{
+			printf("|%c|", m->map[i][j]);
+			if (m->map[i][j] == ' ' && m->map[i][j + 1] && (m->map[i][j + 1] != ' ' || m->map[i][j + 1] != '1'))
+			{
+				printf("|%c| i::%d j::%d\n", m->map[i][j], i, j);
+				return (0);
+			}
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+	return (1);
 }
 
 int	ft_check_valid_map(t_map *m, int i, int j, int player)

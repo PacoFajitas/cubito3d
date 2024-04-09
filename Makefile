@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
+#    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/07 21:28:55 by mlopez-i         ###   ########.fr        #
+#    Updated: 2024/04/09 21:02:03 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@ NAME		= cub3D
 INC_DIR		= inc
 LIB_DIR		= inc
 MKFL		= Makefile
+PARSE_DIR	= parse/
+UTILS_DIR	= utils/
+MLX_UTILS	= mini_fun/
 SRC_DIR		= srcs/
 OBJ_DIR		= objs/
 
@@ -39,15 +42,16 @@ LIBC = ar -rcs
 CC = clang
 # =============
 
-SRC_L	=	get_next_line_utils.c	\
-			get_next_line.c			\
-			init.c					\
-			main.c					\
-			parse_info.c			\
-			parse_map.c				\
-			print_utils.c			\
-			utils_line.c			\
-			utils_tabs.c			\
+SRC_L	=	main.c					\
+
+SRC_L +=	$(addprefix $(PARSE_DIR), parse_map.c)	\
+			$(addprefix $(PARSE_DIR), parse_info.c)	\
+			$(addprefix $(UTILS_DIR), print_utils.c)	\
+			$(addprefix $(UTILS_DIR), utils_line.c)	\
+			$(addprefix $(UTILS_DIR), utils_tabs.c)	\
+			$(addprefix $(UTILS_DIR), init.c)	\
+			$(addprefix $(UTILS_DIR), get_next_line.c)	\
+			$(addprefix $(UTILS_DIR), get_next_line_utils.c)	\
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_L))
 

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/09 20:48:23 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 21:08:29 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,31 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 12
 # endif
+
+/*	libraries	*/
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
+# include "mlx/mlx.h"
 
-typedef	struct	s_vector
+/*	defines	*/
+# define MLX_ERROR		0
+# define HEIGHT 		1080
+# define WIDTH			1080
+
+typedef	struct	s_player
 {
+	char	dir;
 	double	posX;
 	double	posY;
 	double	dirX;
 	double	dirY;
-}		t_vector;
+	double	planeX;
+	double	planeY;
+}		t_player;
 
 
 typedef struct s_gen
@@ -43,7 +54,7 @@ typedef struct s_gen
 	char		**map;
 	int			height;
 	int			width;
-	t_vector	*v;
+	t_player	*p;
 }				t_map;
 
 char	*get_next_line(int fd);
@@ -55,8 +66,8 @@ char	*ft_fill_data(char *data, int fd, int flag);
 char	*ft_free(char **buffer);
 
 /*	init.c	*/
-void	ft_init_tmap(t_map *m, t_vector *vec);
-void	ft_init_player_pos(t_vector *v, int x, int y);
+void	ft_init_tmap(t_map *m, t_player *vec);
+void	ft_init_player_pos(t_player *p, int x, int y);
 
 /*	parse_info.c	*/
 void	ft_readfile(int fd, t_map *m, int j);

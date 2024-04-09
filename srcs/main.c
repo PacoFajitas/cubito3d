@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/09 20:48:10 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 21:03:03 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(int argc, char **argv)
 {
 	t_map 		m;
-	t_vector	v;
+	t_player	p;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Please choose a map\n", 2);

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/07 21:35:09 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 20:48:23 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,28 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 
+typedef	struct	s_vector
+{
+	double	posX;
+	double	posY;
+	double	dirX;
+	double	dirY;
+}		t_vector;
+
+
 typedef struct s_gen
 {
-	char	**file;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
-	char	**map;
-	int		height;
-	int		width;
+	char		**file;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*f;
+	char		*c;
+	char		**map;
+	int			height;
+	int			width;
+	t_vector	*v;
 }				t_map;
 
 char	*get_next_line(int fd);
@@ -45,7 +55,8 @@ char	*ft_fill_data(char *data, int fd, int flag);
 char	*ft_free(char **buffer);
 
 /*	init.c	*/
-void	ft_init_tmap(t_map *m);
+void	ft_init_tmap(t_map *m, t_vector *vec);
+void	ft_init_player_pos(t_vector *v, int x, int y);
 
 /*	parse_info.c	*/
 void	ft_readfile(int fd, t_map *m, int j);

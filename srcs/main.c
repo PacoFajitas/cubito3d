@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/07 21:54:05 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 20:48:10 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 int main(int argc, char **argv)
 {
-	t_map m;
-	
+	t_map 		m;
+	t_vector	v;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Please choose a map\n", 2);
 		return(1);
 	}
-	ft_init_tmap(&m);
+	ft_init_tmap(&m, &v);
 	if(ft_check_file(argv[1], &m))
 	{
 		ft_putstr_fd("Error\n", 2);

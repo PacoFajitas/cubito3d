@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/09 21:03:03 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 23:41:36 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 int main(int argc, char **argv)
 {
-	t_map 		m;
-	t_player	p;
+	t_data data;
 	if (argc != 2)
 	{
 		ft_putstr_fd("Please choose a map\n", 2);
 		return(1);
 	}
-	ft_init_tmap(&m, &v);
-	if(ft_check_file(argv[1], &m))
+	ft_init_tdata(&data);
+	if(ft_check_file(argv[1], data.m))
 	{
 		ft_putstr_fd("Error\n", 2);
 		//ft_free_m(&m);
 		return(1);
 	}
-	if (!ft_parse_info(&m))
+	printf("File checked\n");
+	if (!ft_parse_info(data.m))
 	{
 		ft_putstr_fd("Error\n", 2);
 		//ft_free_m(&m);
 		return (1);
 	}
-	if (!ft_check_valid_map(&m, 1, 1, 0))
+	printf("Info parsed\n");
+	if (!ft_check_valid_map(data.m, 1, 1, 0))
 	{
 		ft_putstr_fd("Error\n", 2);
 		//ft_free_m(&m);

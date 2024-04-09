@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/09 21:08:29 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 23:49:03 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef	struct	s_player
 }		t_player;
 
 
-typedef struct s_gen
+typedef struct s_map
 {
 	char		**file;
 	char		*no;
@@ -57,6 +57,37 @@ typedef struct s_gen
 	t_player	*p;
 }				t_map;
 
+typedef struct s_win
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	int		height;
+	int		width;
+}		t_win;
+
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+}		t_img;
+
+typedef struct s_libx
+{
+	t_img	img;
+	t_win	win;
+}		t_libx;
+
+typedef struct s_data
+{
+	t_map	*m;
+	t_libx	*l;
+}		t_data;
+
+
+
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *ret, char *s2);
 char	*ft_strchr(const char *s, int c);
@@ -66,7 +97,7 @@ char	*ft_fill_data(char *data, int fd, int flag);
 char	*ft_free(char **buffer);
 
 /*	init.c	*/
-void	ft_init_tmap(t_map *m, t_player *vec);
+void	ft_init_tdata(t_data *data);
 void	ft_init_player_pos(t_player *p, int x, int y);
 
 /*	parse_info.c	*/

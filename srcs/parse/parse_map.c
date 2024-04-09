@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:05:03 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/09 20:51:00 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 21:14:48 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	ft_check_map_chars(t_map *m, int i, int j, int *player)
 			return(0);
 		}
 		*player = 1;
-		ft_init_player_pos(m->v, j, i);
+		ft_init_player_pos(m->p, j, i);
 	}
 	return (1);
 }

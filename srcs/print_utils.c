@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:33:50 by meri              #+#    #+#             */
-/*   Updated: 2024/04/07 21:32:02 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:27:40 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,23 @@
 
 void ft_print_array(char **array, int i)
 {
-	while (array && array[i])
+	// while (array && array[i])
+	// {
+	// 	printf("|%s|\n", array[i]);
+	// 	i++;
+	// }
+	int	j;
+
+	i = 0;
+	while (array[i])
 	{
-		printf("|%s|\n", array[i]);
+		j = 0;
+		while (array[i][j])
+		{
+			printf("|%c", array[i][j]);
+			j++;
+		}
+		printf("|\n");
 		i++;
 	}
 }

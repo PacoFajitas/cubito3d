@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:05:03 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/07 21:54:20 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/09 19:01:15 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,39 @@ int	ft_get_map(t_map *m, int *i)
 	return(1);
 }
 
-int	ft_check_valid_map2(t_map *m, int i, int j, int player)
+int	ft_check_map_spaces(t_map *m, int i, int j)
+{
+	if (i > 0 && (m->map[i - 1][j] != ' ' && m->map[i - 1][j] != '1'))
+		return (0);
+	if (i < m->height && (m->map[i + 1][j] != ' ' && m->map[i + 1][j] != '1'))
+		return (0);
+	if (j > 0 && (m->map[i][j - 1] != ' ' && m->map[i][j - 1] != '1'))
+		return (0);
+	if (j < m->width && (m->map[i][j + 1] != ' ' && m->map[i][j + 1] != '1'))
+		return (0);
+	return (1);
+}
+
+int	ft_check_map_chars(t_map *m, int i, int j, int *player)
+{
+	if (m->map[i][j] != ' ' && m->map[i][j] != '0' && m->map[i][j] != '1'
+		&& m->map[i][j] != 'N' && m->map[i][j] != 'S' 
+		&& m->map[i][j] != 'W' && m->map[i][j] != 'E')
+		return(0);
+	if (m->map[i][j] == 'N' || m->map[i][j] == 'S' || m->map[i][j] == 'W'
+		|| m->map[i][j] == 'E')
+	{
+		if (*player == 1)
+		{
+			printf("cagas te2\n");
+			return(0);
+		}
+		*player = 1;
+	}
+	return (1);
+}
+
+int	ft_check_valid_map(t_map *m, int i, int j, int player)
 {
 	player = 0;
 	while (i < m->height - 1)
@@ -93,54 +125,16 @@ int	ft_check_valid_map2(t_map *m, int i, int j, int player)
 		j = 1;
 		while (j < m->width - 1)
 		{
-			printf("|%c|", m->map[i][j]);
-			if (m->map[i][j] == ' ' && m->map[i][j + 1] && (m->map[i][j + 1] != ' ' || m->map[i][j + 1] != '1'))
+			if (m->map[i][j] == ' ')
 			{
-				printf("|%c| i::%d j::%d\n", m->map[i][j], i, j);
-				return (0);
+				if (!ft_check_map_spaces(m, i, j))
+					return (0);
 			}
+			if (!ft_check_map_chars(m, i, j, &player))
+				return (0);
 			j++;
 		}
-		printf("\n");
 		i++;
 	}
 	return (1);
-}
-
-int	ft_check_valid_map(t_map *m, int i, int j, int player)
-{
-	while (m->map[i])
-	{
-		j = 1;
-		while (m->map[i][j])
-		{
-			if (m->map[i][j] != ' ' && m->map[i][j] != '1')
-			{
-				if (m->map[i][j] == 'N' || m->map[i][j] == 'S' || m->map[i][j] == 'W' || m->map[i][j] == 'E')
-				{
-					if (player == 1)
-					{
-						printf("cagas te2\n");
-						return(0);
-					}
-					player = 1;
-				}
-				if (m->map[i][j] != '0' && m->map[i][j] != 'N' && m->map[i][j] != 'S' 
-					&& m->map[i][j] != 'W' && m->map[i][j] != 'E')
-				{
-					printf("%s\n", m->map[i]);
-					printf("cagas te1\n");
-					return(0);
-				}
-				if (m->map[i][j + 1] == ' ' || m->map[i + 1][j] == ' ')
-				{
-					printf("%c %d %d\n", m->map[i][j], i , j);
-					return(0);
-				}
-			}
-			j++;
-		}
-		i++;
-	}
-	return(1);
 }

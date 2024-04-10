@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:16:39 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/09 21:18:49 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:19:29 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ char	*ft_return_tabs_expanded(char *line, char *n_line)
 	{
 		if (line[i] == '\t')
 		{
-			n_line = ft_strjoinfree(n_line, "    ");
-			k += 3;
+			n_line = ft_strjoinfree(n_line, "  ");
+			k += 4;
 		}
 		else
 			n_line[k++] = line[i];

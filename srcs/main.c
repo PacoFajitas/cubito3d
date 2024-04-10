@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/09 23:41:36 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:19:17 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int main(int argc, char **argv)
 		return(1);
 	}
 	printf("File checked\n");
+	// ft_print_array(data.m->file, 0);
 	if (!ft_parse_info(data.m))
 	{
 		ft_putstr_fd("Error\n", 2);

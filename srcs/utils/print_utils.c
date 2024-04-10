@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:33:50 by meri              #+#    #+#             */
-/*   Updated: 2024/04/09 21:24:20 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:15:09 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_print_map_data(t_map *m)
 	ft_putstr_fd("data->we::", 1);
 	if (m->we)
 		ft_putstr_fd(m->we, 1);
+	ft_putstr_fd("\n", 1);
 	ft_putstr_fd("data->f::", 1);
 	if (m->f)
 		ft_putstr_fd(m->f, 1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:19:02 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/07 21:34:18 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/10 21:16:06 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,11 @@ char	*ft_clean_line(char *str)
 
 	i = 0;
 	j = 0;
-	while (str[i] && str[i] == ' ')
+	while (str[i] && (str[i] == ' '))
 		i++;
+//		|| str[i] == '\n' || str[i] == '\t'))
 	ret = malloc(ft_strlen(str) - i + 1);
-	while (str[i])
+	while (str[i] && str[i] != '\n')
 	{
 		ret[j] = str[i];
 		i++;

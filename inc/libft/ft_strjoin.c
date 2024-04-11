@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 01:43:43 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/03/17 05:06:50 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:42:37 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,24 @@ char	*ft_strjoinfree(char *s1, char *s2)
 	ret[s1_len + s2_len] = '\0';
 	free(s1);
 	return (ret);
+}
+
+char	*ft_strjoin_char(char *str, char add)
+{
+	char	*new;
+	int		i;
+
+	i = 0;
+	new = malloc(sizeof(char) * (ft_strlen(str) + 2));
+	if (!new)
+		return (NULL);
+	while (str && str[i])
+	{
+		new[i] = str[i];
+		i++;
+	}
+	new[i] = add;
+	new[i + 1] = '\0';
+	free(str);
+	return (new);
 }

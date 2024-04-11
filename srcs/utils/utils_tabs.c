@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_tabs.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:16:39 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/10 21:19:29 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:40:11 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,21 @@ int	ft_count_tabs(char *line)
 char	*ft_return_tabs_expanded(char *line, char *n_line)
 {
 	int	i;
-	int	k;
 
 	i = 0;
-	k = 0;
 	while (line[i])
 	{
-		if (line[i] == '\t')
+		if (line[i] == 9)
 		{
-			n_line = ft_strjoinfree(n_line, "  ");
-			k += 4;
+			n_line = ft_strjoin_char(n_line, 32);
+			n_line = ft_strjoin_char(n_line, 32);
+			n_line = ft_strjoin_char(n_line, 32);
+			n_line = ft_strjoin_char(n_line, 32);
 		}
 		else
-			n_line[k++] = line[i];
+			n_line = ft_strjoin_char(n_line, line[i]);
 		i++;
 	}
-	n_line[k] = '\0';
 	free(line);
 	return (n_line);
 }
@@ -61,7 +60,7 @@ char	*ft_expand_tabs(char *line)
 		return (NULL);
 	i = ft_strlen(line);
 	k = ft_count_tabs(line);
-	new_line = malloc(sizeof(char) * (i + k + 1));
+	new_line = ft_calloc(i + (k * 4 - k), sizeof(char));
 	if (!new_line)
 	{
 		perror("malloc");

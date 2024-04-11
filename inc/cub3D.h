@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/09 23:49:03 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/11 19:52:03 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <fcntl.h>
 # include "../libft/libft.h"
 # include "mlx/mlx.h"
+# include "keys.h"
 
 /*	defines	*/
 # define MLX_ERROR		0
@@ -82,8 +83,9 @@ typedef struct s_libx
 
 typedef struct s_data
 {
-	t_map	*m;
-	t_libx	*l;
+	t_player	*p;
+	t_map		*m;
+	t_libx		*l;
 }		t_data;
 
 
@@ -96,10 +98,15 @@ char	*ft_clean_buffer(char *data);
 char	*ft_fill_data(char *data, int fd, int flag);
 char	*ft_free(char **buffer);
 
-/*	init.c	*/
-void	ft_init_tdata(t_data *data);
-void	ft_init_player_pos(t_player *p, int x, int y);
 
+/*	MOVEMENT	*/
+/*	input_handler.c	*/
+/*	player_movement.c	*/
+
+/*	player_direction.c	*/
+void	ft_init_player_pos(t_player *p, int x, int y, char c);
+void	ft_init_player_dir(t_player *p);
+/*	PARSE	*/
 /*	parse_info.c	*/
 void	ft_readfile(int fd, t_map *m, int j);
 int		ft_check_file(char *map, t_map *m);
@@ -111,10 +118,13 @@ void	ft_find_map_limits(t_map *m, int i);
 char	*ft_get_map_line(char	*str, int width, int i, int j);
 int		ft_get_map(t_map *m, int *i);
 int		ft_check_valid_map(t_map *m, int i, int j, int player);
+
+/*	UTILS	*/
+/*	init.c	*/
+void	ft_init_tdata(t_data *data);
 /*	print_utils.c	*/
 void 	ft_print_array(char **array, int i);
 void	ft_print_map_data(t_map *m);
-
 /*	utils_line.c	*/
 int		ft_count_lines(int fd);
 char	*ft_put_spaces(int width);

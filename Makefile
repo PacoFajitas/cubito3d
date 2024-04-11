@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
+#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/10 21:27:35 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/04/11 19:55:30 by mlopez-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME		= cub3D
 INC_DIR		= inc
 LIB_DIR		= inc
 MKFL		= Makefile
+MOV_DIR		= movement/
 PARSE_DIR	= parse/
 UTILS_DIR	= utils/
 MLX_UTILS	= mini_fun/
@@ -44,7 +45,10 @@ CC = clang
 
 SRC_L	=	main.c					\
 
-SRC_L +=	$(addprefix $(PARSE_DIR), parse_map.c)	\
+SRC_L +=	$(addprefix $(MOV_DIR), input_handler.c)	\
+			$(addprefix $(MOV_DIR), player_direction.c)	\
+			$(addprefix $(MOV_DIR), player_movement.c)	\
+			$(addprefix $(PARSE_DIR), parse_map.c)	\
 			$(addprefix $(PARSE_DIR), parse_info.c)	\
 			$(addprefix $(UTILS_DIR), print_utils.c)	\
 			$(addprefix $(UTILS_DIR), utils_line.c)	\

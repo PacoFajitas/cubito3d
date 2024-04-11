@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_line.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:19:02 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/10 21:16:06 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:53:45 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ char	*ft_trim_final_spaces(char *str, int j, int k)
 	i = ft_strlen(str) - 1;
 	if (!str)
 		return(NULL);
-	if(ft_strlen(str) == 1)
+	if (ft_strlen(str) == 1)
 		return(str);
-	while (str[i] == '\n')
+	if (str[i] == '\n')
 		i--;
-	while (str[i] && str[i] == ' ')
+	while (i > 0 && str[i] && str[i] == 32)
 		i--;
 	i += 1;
 	ret = malloc(i + 1);
@@ -82,7 +82,6 @@ char	*ft_clean_line(char *str)
 	j = 0;
 	while (str[i] && (str[i] == ' '))
 		i++;
-//		|| str[i] == '\n' || str[i] == '\t'))
 	ret = malloc(ft_strlen(str) - i + 1);
 	while (str[i] && str[i] != '\n')
 	{

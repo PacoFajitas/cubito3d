@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:05:03 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/09 21:14:48 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:52:05 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,12 +108,9 @@ int	ft_check_map_chars(t_map *m, int i, int j, int *player)
 		|| m->map[i][j] == 'E')
 	{
 		if (*player == 1)
-		{
-			printf("cagas te2\n");
 			return(0);
-		}
 		*player = 1;
-		ft_init_player_pos(m->p, j, i);
+		ft_init_player_pos(m->p, j, i, m->map[i][j]);
 	}
 	return (1);
 }
@@ -137,5 +134,6 @@ int	ft_check_valid_map(t_map *m, int i, int j, int player)
 		}
 		i++;
 	}
+	ft_print_array(m->map, 0);
 	return (1);
 }

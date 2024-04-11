@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:55:08 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/03 16:39:17 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:14:24 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,5 @@ void	ft_putnbr_fd(int n, int fd);
 int		ft_strcmp(char *ehe, char *cmp);
 char	*ft_strjoinfree(char *s1, char *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_strjoin_char(char *str, char add);
 #endif

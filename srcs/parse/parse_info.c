@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:09:41 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/10 21:26:57 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/11 20:42:12 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	ft_find_info(t_map *m, int j, int line_len, int dot_len)
 	while (m->file[j])
 	{
 		m->file[j] = ft_clean_line(m->file[j]);
-		// printf("Line %d: %s\n", j, m->file[j]);
 		line_len = ft_strlen(m->file[j]);
 		dot_len = ft_strlen(ft_strchr(m->file[j], '.'));
 		if(!ft_strncmp(m->file[j], "NO", 2))

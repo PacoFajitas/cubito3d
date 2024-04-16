@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
+#    By: meri <meri@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/11 19:55:30 by mlopez-i         ###   ########.fr        #
+#    Updated: 2024/04/16 17:06:40 by meri             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,18 +43,20 @@ LIBC = ar -rcs
 CC = clang
 # =============
 
-SRC_L	=	main.c					\
+SRC_L	=	main.c												\
 
-SRC_L +=	$(addprefix $(MOV_DIR), input_handler.c)	\
-			$(addprefix $(MOV_DIR), player_direction.c)	\
-			$(addprefix $(MOV_DIR), player_movement.c)	\
-			$(addprefix $(PARSE_DIR), parse_map.c)	\
-			$(addprefix $(PARSE_DIR), parse_info.c)	\
-			$(addprefix $(UTILS_DIR), print_utils.c)	\
-			$(addprefix $(UTILS_DIR), utils_line.c)	\
-			$(addprefix $(UTILS_DIR), utils_tabs.c)	\
-			$(addprefix $(UTILS_DIR), init.c)	\
-			$(addprefix $(UTILS_DIR), get_next_line.c)	\
+SRC_L +=	$(addprefix $(MOV_DIR), input_handler.c)			\
+			$(addprefix $(MOV_DIR), player_direction.c)			\
+			$(addprefix $(MOV_DIR), player_movement.c)			\
+			$(addprefix $(MOV_DIR), player_position.c)			\
+			$(addprefix $(MOV_DIR), player_rotate.c)			\
+			$(addprefix $(PARSE_DIR), parse_map.c)				\
+			$(addprefix $(PARSE_DIR), parse_info.c)				\
+			$(addprefix $(UTILS_DIR), print_utils.c)			\
+			$(addprefix $(UTILS_DIR), utils_line.c)				\
+			$(addprefix $(UTILS_DIR), utils_tabs.c)				\
+			$(addprefix $(UTILS_DIR), init.c)					\
+			$(addprefix $(UTILS_DIR), get_next_line.c)			\
 			$(addprefix $(UTILS_DIR), get_next_line_utils.c)	\
 
 SRC = $(addprefix $(SRC_DIR), $(SRC_L))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/11 19:52:03 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:25:54 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define MLX_ERROR		0
 # define HEIGHT 		1080
 # define WIDTH			1080
+# define MOVESPEED		0.0125
+# define ROTSPEED		0.015
 
 typedef	struct	s_player
 {
@@ -40,6 +42,9 @@ typedef	struct	s_player
 	double	dirY;
 	double	planeX;
 	double	planeY;
+	int		rotate;
+	int		move_x;
+	int		move_y;
 }		t_player;
 
 
@@ -101,11 +106,20 @@ char	*ft_free(char **buffer);
 
 /*	MOVEMENT	*/
 /*	input_handler.c	*/
-/*	player_movement.c	*/
-
+int		ft_key_pressed(int key, t_data *data);
+int		ft_key_released(int key, t_data *data);
 /*	player_direction.c	*/
 void	ft_init_player_pos(t_player *p, int x, int y, char c);
 void	ft_init_player_dir(t_player *p);
+/*	player_movement.c	*/
+int		ft_move_player_up(t_data *data);
+int		ft_move_player_down(t_data *data);
+int		ft_move_player_left(t_data *data);
+int		ft_move_player_right(t_data *data);
+int		ft_move_player(t_data *data);
+/*	player_position.c	*/
+int		ft_valid_pos(t_data *data, double newX, double newY);
+int		ft_validate_move(t_data *data, double newX, double newY);
 /*	PARSE	*/
 /*	parse_info.c	*/
 void	ft_readfile(int fd, t_map *m, int j);
@@ -121,6 +135,8 @@ int		ft_check_valid_map(t_map *m, int i, int j, int player);
 
 /*	UTILS	*/
 /*	init.c	*/
+void	ft_init_player(t_player *p);
+void	ft_init_map(t_map *m);
 void	ft_init_tdata(t_data *data);
 /*	print_utils.c	*/
 void 	ft_print_array(char **array, int i);

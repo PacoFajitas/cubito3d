@@ -6,7 +6,7 @@
 #    By: meri <meri@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/16 17:06:40 by meri             ###   ########.fr        #
+#    Updated: 2024/04/17 19:58:27 by meri             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME		= cub3D
 INC_DIR		= inc
 LIB_DIR		= inc
 MKFL		= Makefile
+INIT_DIR	= init/
 MOV_DIR		= movement/
 PARSE_DIR	= parse/
 UTILS_DIR	= utils/
@@ -45,7 +46,10 @@ CC = clang
 
 SRC_L	=	main.c												\
 
-SRC_L +=	$(addprefix $(MOV_DIR), input_handler.c)			\
+SRC_L +=	$(addprefix $(INIT_DIR), init_data.c)				\
+			$(addprefix $(INIT_DIR), init_mlx.c)				\
+			$(addprefix $(INIT_DIR), init_textures.c)			\
+			$(addprefix $(MOV_DIR), input_handler.c)			\
 			$(addprefix $(MOV_DIR), player_direction.c)			\
 			$(addprefix $(MOV_DIR), player_movement.c)			\
 			$(addprefix $(MOV_DIR), player_position.c)			\
@@ -55,7 +59,6 @@ SRC_L +=	$(addprefix $(MOV_DIR), input_handler.c)			\
 			$(addprefix $(UTILS_DIR), print_utils.c)			\
 			$(addprefix $(UTILS_DIR), utils_line.c)				\
 			$(addprefix $(UTILS_DIR), utils_tabs.c)				\
-			$(addprefix $(UTILS_DIR), init.c)					\
 			$(addprefix $(UTILS_DIR), get_next_line.c)			\
 			$(addprefix $(UTILS_DIR), get_next_line_utils.c)	\
 

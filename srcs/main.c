@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/10 21:19:17 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/17 19:56:26 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int main(int argc, char **argv)
 		//ft_free_m(&m);
 		return (1);
 	}
+	ft_init_mlx(&data);
 	// ft_print_map_data(&m);
 	// ft_print_array(m.map, 0);
 	return(0);

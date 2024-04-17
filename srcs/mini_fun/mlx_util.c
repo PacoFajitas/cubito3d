@@ -13,21 +13,21 @@
 
 #include "../inc/cub3d.h"
 
-void	put_pixel(t_data *f, int x, int y, int color)
+void	put_pixel(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = f->l->img.addr + (y * f->l->img.line_len + x * (f->l->img.bpp / 8));
+	dst = data->img->addr + (y * data->img->line_len + x * (data->img->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 void	new_image(t_data *data)
 {
-	data->l->img.img = mlx_new_image(data->l->win.mlx_ptr, WIDTH, HEIGHT);
+	data->img->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	// if (!data->l->img.img)
 		// ft_error(data, MLX_ERROR);
-	data->l->img.addr = mlx_get_data_addr(data->l->img.img, 
-					&data->l->img.bpp, &data->l->img.line_len, &data->l->img.endian);
+	data->img->addr = mlx_get_data_addr(data->img->img, 
+					&data->img->bpp, &data->img->line_len, &data->img->endian);
 	// if (!data->l->img.addr)
 		// ft_error(data, MLX_ERROR);
-	mlx_clear_window(data->l->win.mlx_ptr, data->l->win.win_ptr);
+	mlx_clear_window(data->mlx, data->win);
 }

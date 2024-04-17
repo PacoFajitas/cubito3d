@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_direction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:38:10 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/11 19:47:47 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:19:29 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	ft_init_player_pos(t_player *p, int x, int y, char c)
 {
+	printf("c is ::%c::\n", c);
 	p->dir = c;
 	p->posX = x;
 	p->posY = y;
-	printf("player pos is:: x=%f  y=%f\n", p->posX, p->posY);	
+	printf("player pos is:: x=%f  y=%f \n", p->posX, p->posY);	
 }
 
 void	ft_init_player_dir_ns(t_player *p)

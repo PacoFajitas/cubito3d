@@ -1,16 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/16 17:25:41 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/17 20:18:06 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	ft_init_start_img(t_img *img)
+{
+	img->img = NULL;
+	img->addr = NULL;
+	img->bpp = 0;
+	img->line_len = 0;
+	img->endian = 0;
+}
 
 void	ft_init_player(t_player *p)
 {
@@ -47,4 +56,6 @@ void	ft_init_tdata(t_data *data)
 		// ft_error(data, MLX_ERROR);
 	ft_init_player(data->p);
 	ft_init_map(data->m);
+	data->height = HEIGHT;
+	data->width = WIDTH;
 }

@@ -6,7 +6,7 @@
 /*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/16 17:25:54 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/17 20:17:09 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,17 @@
 
 /*	defines	*/
 # define MLX_ERROR		0
+
 # define HEIGHT 		1080
 # define WIDTH			1080
+
 # define MOVESPEED		0.0125
 # define ROTSPEED		0.015
+
+# define NORTH			0
+# define SOUTH			1
+# define EAST			2
+# define WEST			3
 
 typedef	struct	s_player
 {
@@ -80,17 +87,16 @@ typedef struct s_img
 	int		endian;
 }		t_img;
 
-typedef struct s_libx
-{
-	t_img	img;
-	t_win	win;
-}		t_libx;
-
 typedef struct s_data
 {
 	t_player	*p;
 	t_map		*m;
-	t_libx		*l;
+	void		*mlx;
+	void		*win;
+	t_img		*img;
+	int			**textures;
+	int			height;
+	int			width;
 }		t_data;
 
 
@@ -103,6 +109,16 @@ char	*ft_clean_buffer(char *data);
 char	*ft_fill_data(char *data, int fd, int flag);
 char	*ft_free(char **buffer);
 
+/*	INIT	*/
+/*	init_data.c	*/
+void	ft_init_start_img(t_img *img);
+void	ft_init_player(t_player *p);
+void	ft_init_map(t_map *m);
+void	ft_init_tdata(t_data *data);
+/*	init_mlx.c	*/
+void	ft_init_img(t_data *data, t_img *img);
+void	ft_init_mlx(t_data *data);
+/*	init_textures.c	*/
 
 /*	MOVEMENT	*/
 /*	input_handler.c	*/
@@ -134,10 +150,6 @@ int		ft_get_map(t_map *m, int *i);
 int		ft_check_valid_map(t_map *m, int i, int j, int player);
 
 /*	UTILS	*/
-/*	init.c	*/
-void	ft_init_player(t_player *p);
-void	ft_init_map(t_map *m);
-void	ft_init_tdata(t_data *data);
 /*	print_utils.c	*/
 void 	ft_print_array(char **array, int i);
 void	ft_print_map_data(t_map *m);

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/19 17:54:20 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/19 21:28:29 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,31 @@
 # define WIDTH			1080
 
 # define MOVESPEED		0.5
-# define ROTSPEED		1
+# define ROTSPEED		0.5
 
 # define NORTH			0
 # define SOUTH			1
 # define EAST			2
 # define WEST			3
+
+// falta un int mapX, mapY que no se si hace falta
+typedef struct s_ray
+{
+	double	cameraX;
+	double	dirX;
+	double	dirY;
+	double	deltaX;
+	double	deltaY;
+	double	sideX;
+	double	sideY;
+	int		hit;
+	int		side;
+	int		mapX;
+	int		mapY;
+	int		stepX;
+	int		stepY;
+}		t_ray;
+
 
 typedef	struct	s_player
 {
@@ -90,6 +109,7 @@ typedef struct s_img
 typedef struct s_data
 {
 	t_player	*p;
+	t_ray		*r;
 	t_map		*m;
 	void		*mlx;
 	void		*win;
@@ -114,6 +134,7 @@ char	*ft_free(char **buffer);
 void	ft_init_start_img(t_img *img);
 void	ft_init_player(t_player *p);
 void	ft_init_map(t_data *data, t_map *m);
+void	ft_init_tray(t_ray *r);
 void	ft_init_tdata(t_data *data);
 /*	init_mlx.c	*/
 void	ft_init_img(t_data *data, t_img *img);
@@ -137,6 +158,10 @@ int		ft_move_player(t_data *data);
 /*	player_position.c	*/
 int		ft_valid_pos(t_data *data, double newX, double newY);
 int		ft_validate_move(t_data *data, double newX, double newY);
+/*	player_rotate.c	*/
+int	ft_rotate_lr(t_data *data);
+int	ft_rotate_player(t_data *data);
+
 /*	PARSE	*/
 /*	parse_info.c	*/
 void	ft_readfile(int fd, t_map *m, int j);
@@ -149,6 +174,13 @@ void	ft_find_map_limits(t_map *m, int i);
 char	*ft_get_map_line(char	*str, int width, int i, int j);
 int		ft_get_map(t_map *m, int *i);
 int		ft_check_valid_map(t_map *m, int i, int j, int player);
+
+/*	RAYCAST	*/
+/*	raycast.c	*/
+void	ft_init_raycast(t_ray *r, t_player *p, int x);
+void	ft_set_dda(t_ray *r, t_player *p);
+void	ft_perform_dda(t_map *m, t_ray *r);
+int		ft_raycasting(t_data *data);
 
 /*	UTILS	*/
 /*	print_utils.c	*/

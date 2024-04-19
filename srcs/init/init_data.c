@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/19 17:07:12 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/19 21:05:46 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,33 @@ void	ft_init_map(t_data *data, t_map *m)
 	m->p = data->p;
 }
 
+void	ft_init_tray(t_ray *r)
+{
+	r->cameraX = 0.0;
+	r->deltaX = 0.0;
+	r->deltaY = 0.0;
+	r->dirX = 0.0;
+	r->dirY = 0.0;
+	r->sideX = 0.0;
+	r->sideY = 0.0;
+	r->hit = 0;
+	r->side = 0;
+	r->mapX = 0;
+	r->mapY = 0;
+	r->stepX = 0;
+	r->stepY = 0;
+}
+
 void	ft_init_tdata(t_data *data)
 {
 	data->m = malloc(sizeof(t_map));
 	data->p = malloc(sizeof(t_player));
-	// if (!data->m || !data->p)
+	data->r = malloc(sizeof(t_ray));
+	// if (!data->m || !data->p || !data->r)
 		// ft_error(data, MLX_ERROR);
 	ft_init_player(data->p);
 	ft_init_map(data, data->m);
+	ft_init_tray(data->r);
 	data->height = HEIGHT;
 	data->width = WIDTH;
 }

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:50:01 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/19 17:27:47 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/19 20:43:21 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	ft_key_pressed(int key, t_data *data)
 		data->p->move_y = -1;
 	if (key == D)
 		data->p->move_x = 1;
-	ft_move_player(data);
+	ft_move_player(data);		//habra que moverlo
+	ft_rotate_player(data);
 	ft_print_array(data->m->map, 0);
 	printf("player is x::%f  y::%f\n", data->p->posX, data->p->posY);
 	return (0);

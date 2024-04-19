@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/17 20:17:09 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/19 17:54:20 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define HEIGHT 		1080
 # define WIDTH			1080
 
-# define MOVESPEED		0.0125
-# define ROTSPEED		0.015
+# define MOVESPEED		0.5
+# define ROTSPEED		1
 
 # define NORTH			0
 # define SOUTH			1
@@ -113,7 +113,7 @@ char	*ft_free(char **buffer);
 /*	init_data.c	*/
 void	ft_init_start_img(t_img *img);
 void	ft_init_player(t_player *p);
-void	ft_init_map(t_map *m);
+void	ft_init_map(t_data *data, t_map *m);
 void	ft_init_tdata(t_data *data);
 /*	init_mlx.c	*/
 void	ft_init_img(t_data *data, t_img *img);
@@ -124,6 +124,7 @@ void	ft_init_mlx(t_data *data);
 /*	input_handler.c	*/
 int		ft_key_pressed(int key, t_data *data);
 int		ft_key_released(int key, t_data *data);
+void	listen_for_input(t_data *data);
 /*	player_direction.c	*/
 void	ft_init_player_pos(t_player *p, int x, int y, char c);
 void	ft_init_player_dir(t_player *p);

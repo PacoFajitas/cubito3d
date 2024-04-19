@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/17 19:56:26 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/19 17:25:00 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	ft_init_mlx(&data);
+	mlx_hook(data.win, 2, (1L << 0), ft_key_pressed, &data);
+	mlx_hook(data.win, 3, (1L << 0), ft_key_released, &data);
+	mlx_loop(data.mlx);
 	// ft_print_map_data(&m);
 	// ft_print_array(m.map, 0);
 	return(0);

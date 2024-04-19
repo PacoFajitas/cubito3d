@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:54:22 by meri              #+#    #+#             */
-/*   Updated: 2024/04/16 17:07:13 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/19 17:53:17 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 //	last one is to check collision
 int	ft_valid_pos(t_data *data, double newX, double newY)
 {
-	if (newX < 0.25 || newX >= data->m->width - 1.25)
+	printf("    map[%f][%f]::%c     \n", newY, newX, data->m->map[(int)newY][(int)newX]);
+	if (newX <= MOVESPEED || newX >= data->m->width - MOVESPEED)
 		return (0);
-	if (newY < 0.25 || newY >= data->m->height - 1.25)
+	if (newY <= MOVESPEED || newY >= data->m->height - MOVESPEED)
 		return (0);
-	if (data->m->map[(int)newX][(int)newY] == '0')
+	if (data->m->map[(int)newY][(int)newX] == '0'
+		|| data->m->map[(int)newY][(int)newX] == data->p->dir)
 		return (1);
 	return (0);
 }
@@ -32,12 +34,16 @@ int	ft_validate_move(t_data *data, double newX, double newY)
 	moved = 0;
 	if (ft_valid_pos(data, newX, data->p->posY))
 	{
+		data->m->map[(int)data->p->posY][(int)data->p->posX] = '0';
 		data->p->posX = newX;
+		data->m->map[(int)data->p->posY][(int)newX] = data->p->dir;
 		moved = 1;
 	}
 	if (ft_valid_pos(data, data->p->posX, newY))
 	{
+		data->m->map[(int)data->p->posY][(int)data->p->posX] = '0';
 		data->p->posY = newY;
+		data->m->map[(int)newY][(int)data->p->posX] = data->p->dir;
 		moved = 1;
 	}
 	return (moved);

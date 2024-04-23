@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:05:03 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/11 20:52:05 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 21:13:23 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,6 @@ int	ft_check_valid_map(t_map *m, int i, int j, int player)
 		}
 		i++;
 	}
-	ft_print_array(m->map, 0);
+	// ft_print_array(m->map, 0);
 	return (1);
 }

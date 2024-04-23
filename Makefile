@@ -6,7 +6,7 @@
 #    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/23 17:28:05 by mlopez-i         ###   ########.fr        #
+#    Updated: 2024/04/23 20:42:46 by mlopez-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRC_L +=	$(addprefix $(INIT_DIR), init_data.c)				\
 			$(addprefix $(PARSE_DIR), parse_info.c)				\
 			$(addprefix $(RENDER_DIR), raycast.c)				\
 			$(addprefix $(RENDER_DIR), render.c)				\
+			$(addprefix $(UTILS_DIR), errors.c)					\
 			$(addprefix $(UTILS_DIR), print_utils.c)			\
 			$(addprefix $(UTILS_DIR), utils_line.c)				\
 			$(addprefix $(UTILS_DIR), utils_tabs.c)				\

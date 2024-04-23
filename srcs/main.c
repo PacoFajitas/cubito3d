@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/23 18:58:12 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 21:11:37 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 		return(1);
 	}
 	ft_init_tdata(&data);
-	if(ft_check_file(argv[1], data.m))
+	if(!ft_check_file(argv[1], data.m))
 	{
 		ft_putstr_fd("Error\n", 2);
 		//ft_free_m(&m);
@@ -36,12 +36,14 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	printf("Info parsed\n");
+	// printf("valid map:::%i\n", ft_check_valid_map(data.m, 1, 1, 0));
 	if (!ft_check_valid_map(data.m, 1, 1, 0))
 	{
 		ft_putstr_fd("Error\n", 2);
-		//ft_free_m(&m);
+		exit(0);
 		return (1);
 	}
+	printf("check ok\n");
 	ft_init_mlx(&data);
 	listen_for_input(&data);
 	mlx_loop_hook(data.mlx, ft_render, &data);

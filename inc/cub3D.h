@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/23 19:53:11 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 20:55:19 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,8 @@ int		ft_raycasting(t_data *data);
 int		ft_render(t_data *data);
 
 /*	UTILS	*/
+/*	errors.c	*/
+void	ft_error(t_data *data, char *msg);
 /*	print_utils.c	*/
 void 	ft_print_array(char **array, int i);
 void	ft_print_map_data(t_map *m);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:09:41 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/16 17:19:06 by meri             ###   ########.fr       */
+/*   Updated: 2024/04/23 21:02:36 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ int	ft_check_file(char *map, t_map *m)
 	if (ft_strcmp(ft_strrchr(map, '.'), ".cub") != 0)
 	{
 		ft_putstr_fd("Please choose a .cub file\n", 2);
-		return(1);
+		return(0);
 	}
 	fd = open(map, O_RDONLY);
 	if (fd == -1)
 	{
 		perror("fd");
-		return (1);
+		return (0);
 	}
 	i = ft_count_lines(fd);
 	close(fd);
@@ -61,11 +61,11 @@ int	ft_check_file(char *map, t_map *m)
 	if (fd == -1)
 	{
 		perror("fd");
-		return (1);
+		return (0);
 	}
 	ft_readfile(fd, m, i);
 	close(fd);
-	return(0);
+	return(1);
 }
 
 char	*ft_get_fc(char *str, char c)
@@ -116,7 +116,7 @@ int	ft_find_info(t_map *m, int j, int line_len, int dot_len)
 		if (m->no && m->so && m->we && m->ea && m->f && m->c)
 			break ;
 	}
-	ft_print_map_data(m);
+	// ft_print_map_data(m);
 	if (!m->no || !m->so || !m->we || !m->ea || !m->f || !m->c)
 		return(0);
 	return(j);

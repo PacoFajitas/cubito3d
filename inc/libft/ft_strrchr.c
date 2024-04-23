@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 13:56:52 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/05/13 16:07:17 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:45:31 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,3 @@ char	*ft_strrchr(const char *str, int c)
 	}
 	return (NULL);
 }
-/* int	main()
-{
-	char str[400] = "";
-	printf("T: %s\n", ft_strrchr(str, '\0'));
-	printf("M: %s\n", strrchr(str, '\0'));
-	printf("T: %s\n", ft_strrchr(str, 'u'));
-	printf("M: %s\n", strrchr(str, 'u'));
-	return (0);
-}  */

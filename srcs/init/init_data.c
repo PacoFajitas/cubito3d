@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/19 21:05:46 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:53:26 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_init_player(t_player *p)
 	p->rotate = 0;
 	p->move_x = 0;
 	p->move_y = 0;
+	p->has_moved = 0;
 }
 
 void	ft_init_map(t_data *data, t_map *m)
@@ -58,24 +59,25 @@ void	ft_init_tray(t_ray *r)
 	r->dirY = 0.0;
 	r->sideX = 0.0;
 	r->sideY = 0.0;
-	r->hit = 0;
+	r->wall_dist = 0.0;
 	r->side = 0;
 	r->mapX = 0;
 	r->mapY = 0;
 	r->stepX = 0;
 	r->stepY = 0;
+	r->lineH = 0;
+	r->draw_start = 0;
+	r->draw_end = 0;
 }
 
 void	ft_init_tdata(t_data *data)
 {
 	data->m = malloc(sizeof(t_map));
 	data->p = malloc(sizeof(t_player));
-	data->r = malloc(sizeof(t_ray));
-	// if (!data->m || !data->p || !data->r)
+	// if (!data->m || !data->p  || !data->img)
 		// ft_error(data, MLX_ERROR);
 	ft_init_player(data->p);
 	ft_init_map(data, data->m);
-	ft_init_tray(data->r);
 	data->height = HEIGHT;
 	data->width = WIDTH;
 }

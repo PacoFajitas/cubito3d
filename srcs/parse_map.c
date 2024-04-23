@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:05:03 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/09 21:02:56 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:46:36 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	ft_check_map_chars(t_map *m, int i, int j, int *player)
 			return(0);
 		}
 		*player = 1;
-		ft_init_player_pos(m->p, j, i);
+		ft_init_player_pos(m->p, j, i, m->map[i][j]);
 	}
 	return (1);
 }

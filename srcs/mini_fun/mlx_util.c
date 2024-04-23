@@ -17,16 +17,16 @@ void	put_pixel(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->img->addr + (y * data->img->line_len + x * (data->img->bpp / 8));
+	dst = data->img.addr + (y * data->img.line_len + x * (data->img.bpp / 8));
 	*(unsigned int *)dst = color;
 }
 void	new_image(t_data *data)
 {
-	data->img->img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	// if (!data->l->img.img)
 		// ft_error(data, MLX_ERROR);
-	data->img->addr = mlx_get_data_addr(data->img->img, 
-					&data->img->bpp, &data->img->line_len, &data->img->endian);
+	data->img.addr = mlx_get_data_addr(data->img.img, 
+					&data->img.bpp, &data->img.line_len, &data->img.endian);
 	// if (!data->l->img.addr)
 		// ft_error(data, MLX_ERROR);
 	mlx_clear_window(data->mlx, data->win);

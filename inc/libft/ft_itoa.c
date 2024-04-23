@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 20:28:32 by tfiguero          #+#    #+#             */
-/*   Updated: 2023/05/12 22:43:00 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:45:08 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,3 @@ char	*ft_itoa(int n)
 	}
 	return (ret);
 }
-
-/* int	main(void)
-{
-	char *result;
-
-	result = ft_itoa(42);
-	if (!strcmp(result, "42"))
-		printf("son iguales");
-	printf("%lu", strlen(result));
-	//printf("%s", ft_itoa(42));
-} */

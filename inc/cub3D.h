@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/19 21:28:29 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:53:11 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define HEIGHT 		1080
 # define WIDTH			1080
 
-# define MOVESPEED		0.5
-# define ROTSPEED		0.5
+# define MOVESPEED		0.0125
+# define ROTSPEED		0.15
 
 # define NORTH			0
 # define SOUTH			1
@@ -50,12 +50,15 @@ typedef struct s_ray
 	double	deltaY;
 	double	sideX;
 	double	sideY;
-	int		hit;
+	double	wall_dist;
 	int		side;
 	int		mapX;
 	int		mapY;
 	int		stepX;
 	int		stepY;
+	int		lineH;
+	int		draw_start;
+	int		draw_end;
 }		t_ray;
 
 
@@ -71,6 +74,7 @@ typedef	struct	s_player
 	int		rotate;
 	int		move_x;
 	int		move_y;
+	int		has_moved;
 }		t_player;
 
 
@@ -106,15 +110,27 @@ typedef struct s_img
 	int		endian;
 }		t_img;
 
+typedef struct s_text
+{
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+}	t_text;
+
+
 typedef struct s_data
 {
 	t_player	*p;
-	t_ray		*r;
 	t_map		*m;
 	void		*mlx;
 	void		*win;
-	t_img		*img;
-	int			**textures;
+	t_ray		r;
+	t_img		img;
+	t_text		text[4];
 	int			height;
 	int			width;
 }		t_data;
@@ -137,7 +153,7 @@ void	ft_init_map(t_data *data, t_map *m);
 void	ft_init_tray(t_ray *r);
 void	ft_init_tdata(t_data *data);
 /*	init_mlx.c	*/
-void	ft_init_img(t_data *data, t_img *img);
+void	ft_save_text(t_data *data, t_text *t, char *path);
 void	ft_init_mlx(t_data *data);
 /*	init_textures.c	*/
 
@@ -175,12 +191,15 @@ char	*ft_get_map_line(char	*str, int width, int i, int j);
 int		ft_get_map(t_map *m, int *i);
 int		ft_check_valid_map(t_map *m, int i, int j, int player);
 
-/*	RAYCAST	*/
+/*	RENDER	*/
 /*	raycast.c	*/
 void	ft_init_raycast(t_ray *r, t_player *p, int x);
 void	ft_set_dda(t_ray *r, t_player *p);
 void	ft_perform_dda(t_map *m, t_ray *r);
+void	ft_calculate_length(t_ray *r);
 int		ft_raycasting(t_data *data);
+/*	render.c	*/
+int		ft_render(t_data *data);
 
 /*	UTILS	*/
 /*	print_utils.c	*/

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:38:10 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/19 17:37:19 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:46:43 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	ft_init_player_pos(t_player *p, int x, int y, char c)
 {
-	printf("c is ::%c::\n", c);
 	p->dir = c;
 	p->posX = x;
 	p->posY = y;

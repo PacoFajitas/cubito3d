@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:37:43 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/19 17:37:26 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:04:15 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,9 @@ int	ft_move_player(t_data *data)
 		moved += ft_move_player_right(data);
 	if (data->p->move_x == -1)
 		moved += ft_move_player_left(data);
+	if (data->p->rotate != 0)
+		moved += ft_rotate_player(data);
+	//por que cojones funciona bien con esto aqui????????
+	usleep(20000);
 	return (moved);
 }

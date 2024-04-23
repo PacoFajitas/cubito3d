@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 22:09:40 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/23 17:44:55 by mlopez-i         ###   ########.fr       */
+/*   Created: 2024/04/23 17:27:44 by mlopez-i          #+#    #+#             */
+/*   Updated: 2024/04/23 20:01:54 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "cub3D.h"
 
-int	ft_atoi(const char	*str)
+void	ft_render_raycast(t_data *data)
 {
-	int	ret;
-	int	sign;
+	ft_init_tray(&data->r);
+	ft_raycasting(data);
+}
 
-	sign = 1;
-	ret = 0;
-	while (*str == 9 || *str == 10 || *str == 11
-		|| *str == 12 || *str == 13 || *str == 32)
-		str++;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-		{
-			sign = -sign;
-		}
-		str ++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		ret = (ret * 10) + *str - 48;
-		str ++;
-	}
-	return (ret * sign);
+int	ft_render(t_data *data)
+{
+	data->p->has_moved = ft_move_player(data);
+	if (data->p->has_moved == 0)
+		return (0);
+	ft_render_raycast(data);
+	//hay que actualizar la imagen solo si nos movemos
+	//ft_render_images(data);
+	return (0);
 }

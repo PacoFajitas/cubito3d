@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:51:49 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/19 21:28:10 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:55:29 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ void	ft_set_dda(t_ray *r, t_player *p)
 
 void	ft_perform_dda(t_map *m, t_ray *r)
 {
-	while (r->hit == 0)
+	int	hit;
+
+	hit = 0;
+	while (hit == 0)
 	{
 		if (r->sideX < r->sideY)
 		{
@@ -64,8 +67,23 @@ void	ft_perform_dda(t_map *m, t_ray *r)
 			r->side = 1;
 		}
 		if (m->map[r->mapY][r->mapX] > '0')
-			r->hit = 1;
+			hit = 1;
 	}
+}
+
+void	ft_calculate_length(t_ray *r)
+{
+	if (r->side == 0)
+		r->wall_dist = r->sideX - r->deltaX;
+	else
+		r->wall_dist = r->sideY - r->deltaY;
+	r->lineH = (int)(HEIGHT / r->wall_dist);
+	r->draw_start = -(r->lineH) / 2 + HEIGHT / 2;
+	if (r->draw_start < 0)
+		r->draw_start = 0;
+	r->draw_end = r->lineH / 2 + HEIGHT / 2;
+	if (r->draw_end >= HEIGHT)
+		r->draw_end = HEIGHT - 1;
 }
 
 int	ft_raycasting(t_data *data)
@@ -75,10 +93,10 @@ int	ft_raycasting(t_data *data)
 	x = 0;
 	while (x < WIDTH)
 	{
-		ft_init_raycast(data->r, data->p, x);
-		ft_set_dda(data->r, data->p);
-		ft_perform_dda(data->m, data->r);
-		//calcular la distancia de la recta(?)
+		ft_init_raycast(&data->r, data->p, x);
+		ft_set_dda(&data->r, data->p);
+		ft_perform_dda(data->m, &data->r);
+		ft_calculate_length(&data->r);
 		x++;
 	}
 	return (1);

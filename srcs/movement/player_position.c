@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:54:22 by meri              #+#    #+#             */
-/*   Updated: 2024/04/19 20:42:09 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:47:04 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 //	last one is to check collision
 int	ft_valid_pos(t_data *data, double newX, double newY)
 {
-	printf("    map[%f][%f]::%c     \n", newY, newX, data->m->map[(int)newY][(int)newX]);
 	if (newX <= MOVESPEED || newX >= data->m->width - MOVESPEED)
 		return (0);
 	if (newY <= MOVESPEED || newY >= data->m->height - MOVESPEED)

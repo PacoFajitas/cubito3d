@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
+#    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/23 20:42:46 by mlopez-i         ###   ########.fr        #
+#    Updated: 2024/04/24 19:52:06 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRC_L +=	$(addprefix $(INIT_DIR), init_data.c)				\
 			$(addprefix $(MOV_DIR), player_rotate.c)			\
 			$(addprefix $(PARSE_DIR), parse_map.c)				\
 			$(addprefix $(PARSE_DIR), parse_info.c)				\
+			$(addprefix $(PARSE_DIR), parse_info2.c)			\
 			$(addprefix $(RENDER_DIR), raycast.c)				\
 			$(addprefix $(RENDER_DIR), render.c)				\
 			$(addprefix $(UTILS_DIR), errors.c)					\

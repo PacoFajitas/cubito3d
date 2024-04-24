@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:09:41 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/23 21:02:36 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:57:27 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ int	ft_parse_info(t_map *m)
 //	j = 0;
 	i = ft_find_info(m, 0, 0, 0);
 	if (i == 0)
+		return(0);
+	if (!ft_check_rgb(m))
 		return(0);
 	while (m->file[i] && m->file[i][0] && m->file[i][0] == '\n')
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/23 20:55:19 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/24 20:59:43 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ typedef struct s_map
 	char		*ea;
 	char		*f;
 	char		*c;
+	int			f_rgb[3];
+	int			c_rgb[3];
 	char		**map;
 	int			height;
 	int			width;
@@ -185,6 +187,8 @@ int		ft_check_file(char *map, t_map *m);
 char	*ft_get_fc(char *str, char c);
 int		ft_find_info(t_map *m, int j, int line_len, int dot_len);
 int		ft_parse_info(t_map *m);
+/*	parse_info2.c	*/
+int		ft_check_rgb(t_map *m);
 /*	parse_map.c	*/
 void	ft_find_map_limits(t_map *m, int i);
 char	*ft_get_map_line(char	*str, int width, int i, int j);

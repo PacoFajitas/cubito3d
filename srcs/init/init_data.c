@@ -6,20 +6,11 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/23 19:53:26 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:55:29 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
-void	ft_init_start_img(t_img *img)
-{
-	img->img = NULL;
-	img->addr = NULL;
-	img->bpp = 0;
-	img->line_len = 0;
-	img->endian = 0;
-}
 
 void	ft_init_player(t_player *p)
 {
@@ -60,6 +51,7 @@ void	ft_init_tray(t_ray *r)
 	r->sideX = 0.0;
 	r->sideY = 0.0;
 	r->wall_dist = 0.0;
+	r->wallX = 0.0;
 	r->side = 0;
 	r->mapX = 0;
 	r->mapY = 0;
@@ -74,7 +66,7 @@ void	ft_init_tdata(t_data *data)
 {
 	data->m = malloc(sizeof(t_map));
 	data->p = malloc(sizeof(t_player));
-	// if (!data->m || !data->p  || !data->img)
+	// if (!data->m || !data->p)
 		// ft_error(data, MLX_ERROR);
 	ft_init_player(data->p);
 	ft_init_map(data, data->m);

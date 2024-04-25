@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/24 21:00:58 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:06:58 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,12 @@ int main(int argc, char **argv)
 		return(1);
 	}
 	ft_init_tdata(&data);
-	if(!ft_check_file(argv[1], data.m))
+	if(!ft_check_file(argv[1], data.m) || !ft_parse_info(data.m)
+		|| !ft_check_valid_map(data.m, 0, 0, 0)
+		|| !ft_check_textures(&data, &data.t))
 	{
-		ft_putstr_fd("Error\n", 2);
-		//ft_free_m(&m);
+		ft_error(&data, "Error");
 		return(1);
-	}
-	printf("File checked\n");
-	// ft_print_array(data.m->file, 0);
-	if (!ft_parse_info(data.m))
-	{
-		ft_putstr_fd("Error\n", 2);
-		//ft_free_m(&m);
-		return (1);
-	}
-	printf("Floor colors are %i %i %i\n", data.m->f_rgb[0], data.m->f_rgb[1], data.m->f_rgb[2]);
-	printf("Ceiling colors are %i %i %i\n", data.m->c_rgb[0], data.m->c_rgb[1], data.m->c_rgb[2]);
-	printf("Info parsed\n");
-	// printf("valid map:::%i\n", ft_check_valid_map(data.m, 1, 1, 0));
-	if (!ft_check_valid_map(data.m, 0, 0, 0))
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit(0);
-		return (1);
 	}
 	printf("check ok\n");
 	ft_init_mlx(&data);

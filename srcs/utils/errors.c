@@ -6,13 +6,14 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:42:21 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/23 21:00:43 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:51:09 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_free_array(char **array)
+//frees arrays
+void	ft_free_array(void **array)
 {
 	int	i;
 	
@@ -22,16 +23,20 @@ void	ft_free_array(char **array)
 		free(array[i]);
 		i++;
 	}
-	free(array);
+	if (array)
+	{
+		free(array);
+		array = NULL;
+	}
 }
 
 //	frees t_map
 void	ft_free_tmap(t_map *m)
 {
 	if (m->map)
-		ft_free_array(m->map);
+		ft_free_array((void **)m->map);
 	if (m->file)
-		ft_free_array(m->file);
+		ft_free_array((void **)m->file);
 	if (m->no)
 		free(m->no);
 	if (m->so)
@@ -67,6 +72,10 @@ void	ft_error(t_data *data, char *msg)
 		free(data->p);
 		data->p = NULL;
 	}
+	if (data->text)
+		ft_free_array((void **)data->text);
+	if (data->text_pixel)
+		ft_free_array((void **)data->text_pixel);
 	// if (&data->img.img)
 		mlx_destroy_image(data->mlx, &data->img.img);
 	if (data->win)

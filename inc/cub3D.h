@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/24 20:59:43 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:06:29 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define EAST			2
 # define WEST			3
 
+# define TEX_SIZE		64
+
 // falta un int mapX, mapY que no se si hace falta
 typedef struct s_ray
 {
@@ -51,6 +53,7 @@ typedef struct s_ray
 	double	sideX;
 	double	sideY;
 	double	wall_dist;
+	double	wallX;
 	int		side;
 	int		mapX;
 	int		mapY;
@@ -60,7 +63,6 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 }		t_ray;
-
 
 typedef	struct	s_player
 {
@@ -112,16 +114,27 @@ typedef struct s_img
 	int		endian;
 }		t_img;
 
-typedef struct s_text
+typedef struct s_tex
 {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
-	int		width;
-	int		height;
-}	t_text;
+	int				index;
+	int				x;
+	int				y;
+	double			step;
+	double			pos;
+	unsigned long	hex_cel;
+	unsigned long	hex_floor;
+}	t_tex;
+
+// typedef struct s_text
+// {
+// 	void	*img;
+// 	char	*addr;
+// 	int		bpp;
+// 	int		line_len;
+// 	int		endian;
+// 	int		width;
+// 	int		height;
+// }	t_text;
 
 
 typedef struct s_data
@@ -132,7 +145,9 @@ typedef struct s_data
 	void		*win;
 	t_ray		r;
 	t_img		img;
-	t_text		text[4];
+	t_tex		t;
+	int			**text;
+	int			**text_pixel;
 	int			height;
 	int			width;
 }		t_data;
@@ -149,16 +164,17 @@ char	*ft_free(char **buffer);
 
 /*	INIT	*/
 /*	init_data.c	*/
-void	ft_init_start_img(t_img *img);
 void	ft_init_player(t_player *p);
 void	ft_init_map(t_data *data, t_map *m);
 void	ft_init_tray(t_ray *r);
 void	ft_init_tdata(t_data *data);
 /*	init_mlx.c	*/
-void	ft_save_text(t_data *data, t_text *t, char *path);
+void	ft_init_start_img(t_img *img);
+void	ft_init_img(t_data *data, t_img *img);
 void	ft_init_mlx(t_data *data);
 /*	init_textures.c	*/
-
+void	ft_init_ttex(t_tex *t);
+void	ft_init_text_pixel(t_data *data);
 /*	MOVEMENT	*/
 /*	input_handler.c	*/
 int		ft_key_pressed(int key, t_data *data);
@@ -194,19 +210,26 @@ void	ft_find_map_limits(t_map *m, int i);
 char	*ft_get_map_line(char	*str, int width, int i, int j);
 int		ft_get_map(t_map *m, int *i);
 int		ft_check_valid_map(t_map *m, int i, int j, int player);
+/*	parse_textures.c	*/
+int	ft_check_textures(t_data *data, t_tex *t);
 
 /*	RENDER	*/
 /*	raycast.c	*/
 void	ft_init_raycast(t_ray *r, t_player *p, int x);
 void	ft_set_dda(t_ray *r, t_player *p);
 void	ft_perform_dda(t_map *m, t_ray *r);
-void	ft_calculate_length(t_ray *r);
+void	ft_calculate_length(t_data *data, t_ray *r);
 int		ft_raycasting(t_data *data);
 /*	render.c	*/
 int		ft_render(t_data *data);
+/*	textures.c	*/
+void	ft_get_texture_index(t_data *data, t_ray *r);
+void	ft_update_texture_pixels(t_data *data, t_tex *t, t_ray *r, int x);
 
 /*	UTILS	*/
 /*	errors.c	*/
+void	ft_free_array(void **array);
+void	ft_free_tmap(t_map *m);
 void	ft_error(t_data *data, char *msg);
 /*	print_utils.c	*/
 void 	ft_print_array(char **array, int i);

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:51:49 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/23 19:55:29 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 19:34:39 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_perform_dda(t_map *m, t_ray *r)
 	}
 }
 
-void	ft_calculate_length(t_ray *r)
+void	ft_calculate_length(t_data *data, t_ray *r)
 {
 	if (r->side == 0)
 		r->wall_dist = r->sideX - r->deltaX;
@@ -84,6 +84,11 @@ void	ft_calculate_length(t_ray *r)
 	r->draw_end = r->lineH / 2 + HEIGHT / 2;
 	if (r->draw_end >= HEIGHT)
 		r->draw_end = HEIGHT - 1;
+	if (r->side == 0)
+		r->wallX = data->p->posY + r->wall_dist * r->dirY;
+	else
+		r->wallX = data->p->posX + r->wall_dist * r->dirX;
+	r->wallX -= floor(r->wallX);
 }
 
 int	ft_raycasting(t_data *data)
@@ -96,7 +101,8 @@ int	ft_raycasting(t_data *data)
 		ft_init_raycast(&data->r, data->p, x);
 		ft_set_dda(&data->r, data->p);
 		ft_perform_dda(data->m, &data->r);
-		ft_calculate_length(&data->r);
+		ft_calculate_length(data, &data->r);
+		ft_update_texture_pixels(data, &data->t, &data->r, x);
 		x++;
 	}
 	return (1);

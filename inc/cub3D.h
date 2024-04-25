@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/25 20:06:29 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:43:26 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,8 @@ typedef struct s_tex
 	double			pos;
 	unsigned long	hex_cel;
 	unsigned long	hex_floor;
+	int				height;
+	int				width;
 }	t_tex;
 
 // typedef struct s_text
@@ -221,6 +223,10 @@ void	ft_perform_dda(t_map *m, t_ray *r);
 void	ft_calculate_length(t_data *data, t_ray *r);
 int		ft_raycasting(t_data *data);
 /*	render.c	*/
+void	ft_set_image_pixel(t_img *image, int x, int y, int color);
+void	ft_set_frame_image_pixel(t_data *data, t_img *img, int x, int y);
+void	ft_render_frame(t_data *data);
+void	ft_render_raycast(t_data *data);
 int		ft_render(t_data *data);
 /*	textures.c	*/
 void	ft_get_texture_index(t_data *data, t_ray *r);

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:42:21 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 19:51:09 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:19:41 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_free_array(void **array)
 	int	i;
 	
 	i = 0;
-	while (array[i])
+	while (array && array[i])
 	{
 		free(array[i]);
 		i++;

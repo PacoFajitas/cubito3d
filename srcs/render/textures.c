@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:46:16 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 20:02:45 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:41:30 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_update_texture_pixels(t_data *data, t_tex *t, t_ray *r, int x)
 
 	ft_get_texture_index(data, r);
 	t->x = (int)(r->wallX * TEX_SIZE);
-	if ((r->side == 0 && r->dirX > 0) || (r->side == 1 && r->dirY < 0))
+	if ((r->side == 0 && r->dirX < 0) || (r->side == 1 && r->dirY > 0))
 		t->x = TEX_SIZE - t->x - 1;
 	t->step = 1.0 * TEX_SIZE / r->lineH;
 	t->pos = (r->draw_start - HEIGHT / 2 + r->lineH / 2) * t->step;

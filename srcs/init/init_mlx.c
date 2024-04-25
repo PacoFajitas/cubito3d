@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:42:37 by meri              #+#    #+#             */
-/*   Updated: 2024/04/25 19:57:19 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:44:41 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,18 @@ void	ft_init_img(t_data *data, t_img *img)
 
 void	ft_init_mlx(t_data *data)
 {
-	int	size;
-
-	size = TEX_SIZE;
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		ft_error(data, "Error");
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	if (!data->win)
 		ft_error(data, "Error");
-	data->text = ft_calloc(5, sizeof(data->text));
+	data->text = ft_calloc(5, sizeof * data->text);
 	if (!data->text)
 		ft_error(data, "Error");
-	data->text[NORTH] = mlx_xpm_file_to_image(data->mlx, data->m->no, &size, &size);
-	data->text[SOUTH] = mlx_xpm_file_to_image(data->mlx, data->m->so, &size, &size);
-	data->text[EAST] = mlx_xpm_file_to_image(data->mlx, data->m->ea, &size, &size);
-	data->text[WEST] = mlx_xpm_file_to_image(data->mlx, data->m->we, &size, &size);
+	data->text[NORTH] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->no, &data->t.width, &data->t.height);
+	data->text[SOUTH] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->so, &data->t.width, &data->t.height);
+	data->text[EAST] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->ea, &data->t.width, &data->t.height);
+	data->text[WEST] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->we, &data->t.width, &data->t.height);
+	ft_check_textures(data, &data->t);
 }

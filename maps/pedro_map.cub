@@ -1,7 +1,7 @@
-NO ../txtures/pedro1.xpm
-SO ../txtures/pedro2.xpm
-WE ../txtures/pedro3.xpm
-EA ../txtures/pedro4.xpm
+NO txtures/pedro1.xpm
+SO txtures/pedro2.xpm
+WE txtures/pedro3.xpm
+EA txtures/pedro4.xpm
 F 220,	100,	0
 C 225,30,0
 

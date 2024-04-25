@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:51:49 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 19:34:39 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:38:16 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,18 @@ void	ft_calculate_length(t_data *data, t_ray *r)
 
 int	ft_raycasting(t_data *data)
 {
+	t_ray ray;
 	int	x;
 
 	x = 0;
+	ray = data->r;
 	while (x < WIDTH)
 	{
-		ft_init_raycast(&data->r, data->p, x);
-		ft_set_dda(&data->r, data->p);
-		ft_perform_dda(data->m, &data->r);
-		ft_calculate_length(data, &data->r);
-		ft_update_texture_pixels(data, &data->t, &data->r, x);
+		ft_init_raycast(&ray, data->p, x);
+		ft_set_dda(&ray, data->p);
+		ft_perform_dda(data->m, &ray);
+		ft_calculate_length(data, &ray);
+		ft_update_texture_pixels(data, &data->t, &ray, x);
 		x++;
 	}
 	return (1);

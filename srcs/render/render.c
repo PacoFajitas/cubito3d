@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 17:27:44 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 20:02:08 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:29:38 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_set_image_pixel(t_img *image, int x, int y, int color)
 	image->addr[pixel] = color;
 }
 
-static void	set_frame_image_pixel(t_data *data, t_img *img, int x, int y)
+void	ft_set_frame_image_pixel(t_data *data, t_img *img, int x, int y)
 {
 	if (data->text_pixel[y][x] > 0)
 		ft_set_image_pixel(img, x, y, data->text_pixel[y][x]);
@@ -44,7 +44,7 @@ void	ft_render_frame(t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			ft_set_frame_pixel(data, &img, x, y);
+			ft_set_frame_image_pixel(data, &img, x, y);
 			x++;
 		}
 		y++;

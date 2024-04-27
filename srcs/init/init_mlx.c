@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:42:37 by meri              #+#    #+#             */
-/*   Updated: 2024/04/25 20:44:41 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:42:26 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,8 @@ void	ft_init_mlx(t_data *data)
 	data->text = ft_calloc(5, sizeof * data->text);
 	if (!data->text)
 		ft_error(data, "Error");
-	data->text[NORTH] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->no, &data->t.width, &data->t.height);
-	data->text[SOUTH] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->so, &data->t.width, &data->t.height);
-	data->text[EAST] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->ea, &data->t.width, &data->t.height);
-	data->text[WEST] = (int *)mlx_xpm_file_to_image(data->mlx, data->m->we, &data->t.width, &data->t.height);
-	ft_check_textures(data, &data->t);
+	data->text[NORTH] = xpm_to_img(data, data->m->no);
+	data->text[SOUTH] = xpm_to_img(data, data->m->so);
+	data->text[EAST] = xpm_to_img(data, data->m->ea);
+	data->text[WEST] = xpm_to_img(data, data->m->we);
 }

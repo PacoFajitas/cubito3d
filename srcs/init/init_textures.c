@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:57:47 by meri              #+#    #+#             */
-/*   Updated: 2024/04/25 20:44:02 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:10:50 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_init_ttex(t_tex *t)
 	t->step = 0.0;
 	t->pos = 0.0;
 	t->hex_cel = 0x0;
-	t->hex_cel = 0x0;
+	t->hex_floor = 0x0;
 	t->height = 0;
 	t->width = 0;
 }

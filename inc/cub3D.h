@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/25 20:43:26 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:39:39 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,7 @@ typedef struct s_data
 }		t_data;
 
 
-
+int		*xpm_to_img(t_data *data, char *path);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *ret, char *s2);
 char	*ft_strchr(const char *s, int c);
@@ -203,10 +203,11 @@ int	ft_rotate_player(t_data *data);
 void	ft_readfile(int fd, t_map *m, int j);
 int		ft_check_file(char *map, t_map *m);
 char	*ft_get_fc(char *str, char c);
-int		ft_find_info(t_map *m, int j, int line_len, int dot_len);
+int		ft_find_info(t_map *m, int j, int line_len);
 int		ft_parse_info(t_map *m);
 /*	parse_info2.c	*/
 int		ft_check_rgb(t_map *m);
+int		ft_check_texts(t_map *m);
 /*	parse_map.c	*/
 void	ft_find_map_limits(t_map *m, int i);
 char	*ft_get_map_line(char	*str, int width, int i, int j);

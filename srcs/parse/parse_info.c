@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:09:41 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/24 20:57:27 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:17:50 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,21 +93,20 @@ char	*ft_get_fc(char *str, char c)
 	return (ret);
 }
 
-int	ft_find_info(t_map *m, int j, int line_len, int dot_len)
+int	ft_find_info(t_map *m, int j, int line_len)
 {
 	while (m->file[j])
 	{
 		m->file[j] = ft_clean_line(m->file[j]);
 		line_len = ft_strlen(m->file[j]);
-		dot_len = ft_strlen(ft_strchr(m->file[j], '.'));
 		if(!ft_strncmp(m->file[j], "NO", 2))
-			m->no = ft_substr(m->file[j], line_len - dot_len, dot_len);
+			m->no = ft_substr(m->file[j], 0 , line_len);
 		else if(!ft_strncmp(m->file[j], "SO", 2))
-			m->so = ft_substr(m->file[j], line_len - dot_len, dot_len);
+			m->so = ft_substr(m->file[j], 0 , line_len);
 		else if(!ft_strncmp(m->file[j], "WE", 2))
-			m->we = ft_substr(m->file[j], line_len - dot_len, dot_len);
+			m->we = ft_substr(m->file[j], 0 , line_len);
 		else if(!ft_strncmp(m->file[j], "EA", 2))
-			m->ea = ft_substr(m->file[j], line_len - dot_len, dot_len);
+			m->ea = ft_substr(m->file[j], 0 , line_len);
 		else if(!ft_strncmp(m->file[j], "F", 1))
 			m->f = ft_get_fc(m->file[j], 'F');
 		else if(!ft_strncmp(m->file[j], "C", 1))
@@ -128,10 +127,12 @@ int	ft_parse_info(t_map *m)
 //	int j;
 	
 //	j = 0;
-	i = ft_find_info(m, 0, 0, 0);
+	i = ft_find_info(m, 0, 0);
 	if (i == 0)
 		return(0);
 	if (!ft_check_rgb(m))
+		return(0);
+	if(!ft_check_texts(m))
 		return(0);
 	while (m->file[i] && m->file[i][0] && m->file[i][0] == '\n')
 		i++;

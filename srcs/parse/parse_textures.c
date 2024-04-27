@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_textures.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 20:05:11 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 20:15:40 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/27 23:21:37 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,7 @@ int	ft_check_textures(t_data *data, t_tex *t)
 {
 	t->hex_cel = convert_rgb_to_hex(data->m->c_rgb);
 	t->hex_floor = convert_rgb_to_hex(data->m->f_rgb);
+	printf("C: %lx\n", t->hex_cel);
+	printf("F: %lx\n", t->hex_floor);
 	return (1);
 }

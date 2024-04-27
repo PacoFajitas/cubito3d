@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:46:16 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 20:41:30 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:30:04 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	ft_update_texture_pixels(t_data *data, t_tex *t, t_ray *r, int x)
 	{
 		t->y = (int)t->pos & (TEX_SIZE - 1);
 		t->pos += t->step;
-		color = data->text[t->index][TEX_SIZE * t->y + t->x];
+		if(data->text[t->index] != NULL)
+			color = data->text[t->index][TEX_SIZE * t->y + t->x];
 		if (t->index == NORTH || t->index == EAST)
 			color = (color >> 1) & 8355711;
 		if (color > 0)

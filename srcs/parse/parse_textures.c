@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 20:05:11 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/27 23:21:37 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 18:12:44 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static unsigned long	convert_rgb_to_hex(int *rgb_tab)
 	g = rgb_tab[1];
 	b = rgb_tab[2];
 	result = ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+	printf("Numeritos chachis ==== %lx\n", result);
 	return (result);
 }
 
@@ -30,7 +31,5 @@ int	ft_check_textures(t_data *data, t_tex *t)
 {
 	t->hex_cel = convert_rgb_to_hex(data->m->c_rgb);
 	t->hex_floor = convert_rgb_to_hex(data->m->f_rgb);
-	printf("C: %lx\n", t->hex_cel);
-	printf("F: %lx\n", t->hex_floor);
 	return (1);
 }

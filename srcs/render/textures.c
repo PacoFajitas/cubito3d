@@ -6,24 +6,16 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:46:16 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/27 23:42:49 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:47:26 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	ft_init_img_null(t_img *image)
-{
-	image->img = NULL;
-	image->addr = NULL;
-	image->bpp = 0;
-	image->line_len = 0;
-	image->endian = 0;
-}
 
 void	init_texture_img(t_data *data, t_img *image, char *path)
 {
-	ft_init_img_null(image);
+	ft_init_start_img(image);
 	image->img = mlx_xpm_file_to_image(data->mlx, path, &data->t.width,
 			&data->t.height);
 	// if (image->img == NULL)
@@ -53,6 +45,7 @@ void	init_texture_img(t_data *data, t_img *image, char *path)
 		{
 			buffer[y * TEX_SIZE + x]
 				= tmp.addr[y * TEX_SIZE + x];
+				//= (int) tmp.addr + (y * tmp.line_len + x * (tmp.bpp / 8)); testeando esto da mas o menos igual
 			++x;
 		}
 		y++;
@@ -72,7 +65,7 @@ void	ft_get_texture_index(t_data *data, t_ray *r)
 	}
 	else
 	{
-		if (r->dirY < 0)
+		if (r->dirX < 0)
 			data->t.index = NORTH;
 		else
 			data->t.index = SOUTH;
@@ -95,10 +88,9 @@ void	ft_update_texture_pixels(t_data *data, t_tex *t, t_ray *r, int x)
 	{
 		t->y = (int)t->pos & (TEX_SIZE - 1);
 		t->pos += t->step;
-		if(data->text[t->index] != NULL && t->y < TEX_SIZE && t->x < TEX_SIZE)
-			color = data->text[t->index][TEX_SIZE * t->y + t->x];
+		color = data->text[t->index][TEX_SIZE * t->y + t->x];
 		if (t->index == NORTH || t->index == EAST)
-			color = (color >> 1) & 8355711;
+			color = (color >> 1) & 0xff;
 		if (color > 0)
 			data->text_pixel[y][x] = color;
 		y++;

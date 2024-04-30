@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
+#    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/25 20:05:36 by mlopez-i         ###   ########.fr        #
+#    Updated: 2024/04/30 15:41:49 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ CC = clang
 
 SRC_L	=	main.c												\
 
-SRC_L +=	$(addprefix $(INIT_DIR), init_data.c)				\
+SRC_L +=	$(addprefix $(MLX_UTILS), mlx_util.c)				\
+			$(addprefix $(INIT_DIR), init_data.c)				\
 			$(addprefix $(INIT_DIR), init_mlx.c)				\
 			$(addprefix $(INIT_DIR), init_textures.c)			\
 			$(addprefix $(MOV_DIR), input_handler.c)			\

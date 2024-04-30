@@ -11,13 +11,13 @@
 // /*                                                                            */
 // /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "cub3D.h"
 
-void	put_pixel(t_data *data, int x, int y, int color)
+void	put_pixel(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->img.addr + (y * data->img.line_len + x * (data->img.bpp / 8));
+	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
 	*(unsigned int *)dst = color;
 }
 void	new_image(t_data *data)

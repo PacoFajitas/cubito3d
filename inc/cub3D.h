@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/27 23:39:39 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:44:47 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ typedef struct s_data
 }		t_data;
 
 
+void	put_pixel(t_img *data, int x, int y, int color);
 int		*xpm_to_img(t_data *data, char *path);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *ret, char *s2);

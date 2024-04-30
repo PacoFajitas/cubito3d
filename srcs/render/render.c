@@ -6,11 +6,19 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 17:27:44 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/27 21:00:10 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:50:51 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+static int	tex_color(t_data tex, int xtex, int ytex)
+{
+	char	*pix;
+
+	pix = tex.text[NORTH] + (ytex * tex.r.lineH + xtex * (tex.text[NORTH] / 8));
+	return (*(int *)pix);
+}
 
 void	ft_set_image_pixel(t_img *image, int x, int y, int color)
 {
@@ -22,12 +30,22 @@ void	ft_set_image_pixel(t_img *image, int x, int y, int color)
 
 void	ft_set_frame_image_pixel(t_data *data, t_img *img, int x, int y)
 {
-	if (data->text_pixel[y][x] > 0)
-		ft_set_image_pixel(img, x, y, data->text_pixel[y][x]);
+	if (x > data->r.draw_start && x < data->r.draw_end)
+	{
+		ft_set_image_pixel(img,y , x, data->text_pixel[y][x]);
+		// put_pixel(img, x, y, data->text_pixel[y][x]);
+	}
 	else if (y < HEIGHT / 2)
-		ft_set_image_pixel(img, x, y, data->t.hex_cel);
+	{
+		// ft_set_image_pixel(img, x, y, 0x00dc6400);
+		put_pixel(img, x, y, data->t.hex_cel);
+	}
 	else if (y < HEIGHT -1)
-		ft_set_image_pixel(img, x, y, data->t.hex_floor);
+	{
+		put_pixel(img, x, y, data->t.hex_floor);
+		// ft_set_image_pixel(img, x, y, 0x000011c9);
+		// printf("x: %d, y: %d\n", x, y);
+	}
 }
 
 void	ft_render_frame(t_data *data)
@@ -49,6 +67,7 @@ void	ft_render_frame(t_data *data)
 		}
 		y++;
 	}
+	mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, img.img, 0, 0);
 	mlx_destroy_image(data->mlx, img.img);
 }

@@ -6,19 +6,13 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 17:27:44 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/30 19:50:51 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:44:46 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static int	tex_color(t_data tex, int xtex, int ytex)
-{
-	char	*pix;
 
-	pix = tex.text[NORTH] + (ytex * tex.r.lineH + xtex * (tex.text[NORTH] / 8));
-	return (*(int *)pix);
-}
 
 void	ft_set_image_pixel(t_img *image, int x, int y, int color)
 {
@@ -30,9 +24,10 @@ void	ft_set_image_pixel(t_img *image, int x, int y, int color)
 
 void	ft_set_frame_image_pixel(t_data *data, t_img *img, int x, int y)
 {
-	if (x > data->r.draw_start && x < data->r.draw_end)
+	if (data->text_pixel[y][x] > 0)
 	{
-		ft_set_image_pixel(img,y , x, data->text_pixel[y][x]);
+		put_pixel(img, x, y, 0x00FFFF);
+		// ft_set_image_pixel(img,y , x, data->text_pixel[y][x]);
 		// put_pixel(img, x, y, data->text_pixel[y][x]);
 	}
 	else if (y < HEIGHT / 2)

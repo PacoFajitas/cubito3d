@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:42:37 by meri              #+#    #+#             */
-/*   Updated: 2024/04/27 23:42:26 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 20:08:45 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,8 @@ void	ft_init_mlx(t_data *data)
 	data->text[SOUTH] = xpm_to_img(data, data->m->so);
 	data->text[EAST] = xpm_to_img(data, data->m->ea);
 	data->text[WEST] = xpm_to_img(data, data->m->we);
+	init_texture_img(data, &data->text_img[NORTH], data->m->no);
+	init_texture_img(data, &data->text_img[SOUTH], data->m->so);
+	init_texture_img(data, &data->text_img[WEST], data->m->we);
+	init_texture_img(data, &data->text_img[EAST], data->m->ea);
 }

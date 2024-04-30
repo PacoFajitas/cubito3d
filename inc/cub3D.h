@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/30 15:44:47 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:56:26 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define WIDTH			1080
 
 # define MOVESPEED		0.0125
-# define ROTSPEED		0.15
+# define ROTSPEED		0.015
 
 # define NORTH			0
 # define SOUTH			1
@@ -147,6 +147,7 @@ typedef struct s_data
 	void		*win;
 	t_ray		r;
 	t_img		img;
+	t_img		text_img[4];
 	t_tex		t;
 	int			**text;
 	int			**text_pixel;
@@ -155,6 +156,7 @@ typedef struct s_data
 }		t_data;
 
 
+void	init_texture_img(t_data *data, t_img *image, char *path);
 void	put_pixel(t_img *data, int x, int y, int color);
 int		*xpm_to_img(t_data *data, char *path);
 char	*get_next_line(int fd);

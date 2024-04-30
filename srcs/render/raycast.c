@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:51:49 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/27 23:50:41 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 21:59:43 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	ft_calculate_length(t_data *data, t_ray *r)
 	else
 		r->wallX = data->p->posX + r->wall_dist * r->dirX;
 	r->wallX -= floor(r->wallX);
+	// printf("Walldist::::::::%f\n", r->wall_dist);
 }
 
 int	ft_raycasting(t_data *data)

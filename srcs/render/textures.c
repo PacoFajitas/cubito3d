@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:46:16 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/30 19:47:26 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/04/30 20:37:23 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	ft_update_texture_pixels(t_data *data, t_tex *t, t_ray *r, int x)
 {
 	int	y;
 	int	color;
+
+	
 
 	ft_get_texture_index(data, r);
 	t->x = (int)(r->wallX * TEX_SIZE);

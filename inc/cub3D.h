@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/30 21:56:26 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:43:34 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,8 +198,8 @@ int		ft_move_player(t_data *data);
 int		ft_valid_pos(t_data *data, double newX, double newY);
 int		ft_validate_move(t_data *data, double newX, double newY);
 /*	player_rotate.c	*/
-int	ft_rotate_lr(t_data *data);
-int	ft_rotate_player(t_data *data);
+int	ft_rotate_lr(t_data *data, double rotspeed);
+int	ft_rotate_player(t_data *data, double rotate);
 
 /*	PARSE	*/
 /*	parse_info.c	*/

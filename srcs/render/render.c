@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 17:27:44 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/30 21:44:46 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:58:52 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_render_frame(t_data *data)
 		}
 		y++;
 	}
-	mlx_clear_window(data->mlx, data->win);
+	//mlx_clear_window(data->mlx, data->win);
 	mlx_put_image_to_window(data->mlx, data->win, img.img, 0, 0);
 	mlx_destroy_image(data->mlx, img.img);
 }
@@ -77,7 +77,7 @@ void	ft_render_raycast(t_data *data)
 
 int	ft_render(t_data *data)
 {
-	data->p->has_moved = ft_move_player(data);
+	data->p->has_moved += ft_move_player(data);
 	if (data->p->has_moved == 0)
 		return (0);
 	ft_render_raycast(data);

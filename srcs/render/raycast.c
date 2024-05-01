@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 20:51:49 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/30 21:59:43 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:53:54 by meri             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_init_raycast(t_ray *r, t_player *p, int x)
 {
+	ft_init_tray(r);
 	r->cameraX = 2 * x / (double)WIDTH - 1;
 	r->dirX = p->dirX + p->planeX * r->cameraX;
 	r->dirY = p->dirY + p->planeY * r->cameraX;

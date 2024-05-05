@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:42:21 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 20:19:41 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/05 20:48:50 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,7 @@ void	ft_error(t_data *data, char *msg)
 		free(data->p);
 		data->p = NULL;
 	}
-	if (data->text)
-		ft_free_array((void **)data->text);
-	if (data->text_pixel)
-		ft_free_array((void **)data->text_pixel);
-	// if (&data->img.img)
+	if (data->img.img)
 		mlx_destroy_image(data->mlx, &data->img.img);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/01 18:43:34 by meri             ###   ########.fr       */
+/*   Updated: 2024/05/05 20:45:50 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 
 # define NORTH			0
 # define SOUTH			1
-# define EAST			2
-# define WEST			3
+# define WEST			2
+# define EAST			3
 
 # define TEX_SIZE		64
 
@@ -112,20 +112,9 @@ typedef struct s_img
 	int		bpp;
 	int		line_len;
 	int		endian;
+	int		width;
+	int		height;
 }		t_img;
-
-typedef struct s_tex
-{
-	int				index;
-	int				x;
-	int				y;
-	double			step;
-	double			pos;
-	unsigned long	hex_cel;
-	unsigned long	hex_floor;
-	int				height;
-	int				width;
-}	t_tex;
 
 // typedef struct s_text
 // {
@@ -148,16 +137,16 @@ typedef struct s_data
 	t_ray		r;
 	t_img		img;
 	t_img		text_img[4];
-	t_tex		t;
-	int			**text;
-	int			**text_pixel;
 	int			height;
 	int			width;
+	int			texX;
+	double		tex_pos;
+	double		tex_step;
 }		t_data;
 
 
 void	init_texture_img(t_data *data, t_img *image, char *path);
-void	put_pixel(t_img *data, int x, int y, int color);
+void	ft_put_pixel(t_img *data, int x, int y, int color);
 int		*xpm_to_img(t_data *data, char *path);
 char	*get_next_line(int fd);
 char	*ft_strjoin(char *ret, char *s2);
@@ -178,7 +167,6 @@ void	ft_init_start_img(t_img *img);
 void	ft_init_img(t_data *data, t_img *img);
 void	ft_init_mlx(t_data *data);
 /*	init_textures.c	*/
-void	ft_init_ttex(t_tex *t);
 void	ft_init_text_pixel(t_data *data);
 /*	MOVEMENT	*/
 /*	input_handler.c	*/
@@ -217,7 +205,7 @@ char	*ft_get_map_line(char	*str, int width, int i, int j);
 int		ft_get_map(t_map *m, int *i);
 int		ft_check_valid_map(t_map *m, int i, int j, int player);
 /*	parse_textures.c	*/
-int	ft_check_textures(t_data *data, t_tex *t);
+int	convert_rgb_to_hex(int *rgb);
 
 /*	RENDER	*/
 /*	raycast.c	*/
@@ -233,8 +221,8 @@ void	ft_render_frame(t_data *data);
 void	ft_render_raycast(t_data *data);
 int		ft_render(t_data *data);
 /*	textures.c	*/
+int		ft_get_tex_color(t_img *tex, int texX, int texY);
 void	ft_get_texture_index(t_data *data, t_ray *r);
-void	ft_update_texture_pixels(t_data *data, t_tex *t, t_ray *r, int x);
 
 /*	UTILS	*/
 /*	errors.c	*/

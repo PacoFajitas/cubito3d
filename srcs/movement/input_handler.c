@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:50:01 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/30 16:08:26 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/05 21:09:52 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_key_pressed(int key, t_data *data)
 	if (key == D)
 		data->p->move_x = 1;
 	// ft_move_player(data);
-	// ft_print_array(data->m->map, 0);
+	ft_print_array(data->m->map, 0);
 	// printf("player is x::%f  y::%f\n", data->p->posX, data->p->posY);
 	// printf("move_y::%d     move_x::%d\n", data->p->move_y, data->p->move_x);
 	return (0);

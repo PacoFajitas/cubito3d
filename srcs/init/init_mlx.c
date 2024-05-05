@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 19:42:37 by meri              #+#    #+#             */
-/*   Updated: 2024/04/30 20:08:45 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/05 20:57:25 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,12 @@ void	ft_init_mlx(t_data *data)
 	data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "cub3d");
 	if (!data->win)
 		ft_error(data, "Error");
-	data->text = ft_calloc(5, sizeof * data->text);
-	if (!data->text)
-		ft_error(data, "Error");
-	data->text[NORTH] = xpm_to_img(data, data->m->no);
-	data->text[SOUTH] = xpm_to_img(data, data->m->so);
-	data->text[EAST] = xpm_to_img(data, data->m->ea);
-	data->text[WEST] = xpm_to_img(data, data->m->we);
+	// data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
+	// if (!data->img.img)
+	// 	ft_error(data, "Error");
+	// data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp, &data->img.line_len, &data->img.endian);
+	// if (!data->img.addr)
+	// 	ft_error(data, "Error");
 	init_texture_img(data, &data->text_img[NORTH], data->m->no);
 	init_texture_img(data, &data->text_img[SOUTH], data->m->so);
 	init_texture_img(data, &data->text_img[WEST], data->m->we);

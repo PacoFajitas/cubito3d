@@ -13,7 +13,7 @@
 
 #include "cub3D.h"
 
-void	put_pixel(t_img *data, int x, int y, int color)
+void	ft_put_pixel(t_img *data, int x, int y, int color)
 {
 	char	*dst;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_rotate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:05:34 by meri              #+#    #+#             */
-/*   Updated: 2024/05/01 18:48:09 by meri             ###   ########.fr       */
+/*   Updated: 2024/05/05 20:27:36 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_rotate_player(t_data *data, double rotate)
 	rotspeed = (double)(ROTSPEED * rotate);
 	moved = 0;
 	moved += ft_rotate_lr(data, rotspeed);
-	printf("DATAPX  %f   DATAPY%f\n", data->p->dirX, data->p->dirY);
-	printf("DATAPLANEX  %f   DATAPLANEY%f\n", data->p->planeX, data->p->planeY);
+	// printf("DATAPX  %f   DATAPY%f\n", data->p->dirX, data->p->dirY);
+	// printf("DATAPLANEX  %f   DATAPLANEY%f\n", data->p->planeX, data->p->planeY);
 	return (moved);
 }

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/25 20:43:42 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/05 20:44:55 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,12 @@ void	ft_init_tdata(t_data *data)
 {
 	data->p = malloc(sizeof(t_player));
 	data->m = malloc(sizeof(t_map));
-	// if (!data->m || !data->p)
-		// ft_error(data, MLX_ERROR);
+	if (!data->m || !data->p)
+		ft_error(data, "Error");
 	data->height = HEIGHT;
 	data->width = WIDTH;
-	data->text = NULL;
-	data->text_pixel = NULL;
 	data->mlx = NULL;
 	data->win = NULL;
 	ft_init_player(data->p);
 	ft_init_map(data, data->m);
-	ft_init_ttex(&data->t);
 }

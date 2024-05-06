@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:42:21 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/06 18:37:39 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:42:19 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	ft_free_array(void **array)
 {
 	int	i;
-	
+
 	i = 0;
 	while (array && array[i])
 	{
@@ -57,11 +57,17 @@ void	ft_free_tmap(t_map *m)
 //	prints the error and frees everything
 void	ft_error(t_data *data, char *msg)
 {
+	ft_putendl_fd("Error", 2);
 	if (msg)
 	{
 		ft_putstr_fd("Cub3D: ", 2);
 		ft_putendl_fd(msg, 2);
 	}
+	ft_exit(data);
+}
+
+void	ft_exit(t_data *data)
+{
 	if (data->m)
 	{
 		ft_free_tmap(data->m);

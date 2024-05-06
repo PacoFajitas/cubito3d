@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:43:25 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/06 18:42:06 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:45:57 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*ft_else(char **data, char **ret)
 	if (ft_strchr_l(*data, '\n'))
 	{
 		*ret = ft_substr_l(*data, 0, ft_strlen(*data) - ft_strlen
-					(ft_strchr_l(*data, '\n')) + 1);
+				(ft_strchr_l(*data, '\n')) + 1);
 		if (!*ret)
 			return (ft_free(data));
 		*data = ft_clean_buffer(*data);

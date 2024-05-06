@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 04:26:14 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/03 17:25:17 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:51:48 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strcmp(char *ehe, char *cmp)
 	int	i;
 
 	i = 0;
-	if(!ehe || !cmp)
+	if (!ehe || !cmp)
 		return (1);
 	while (ehe[i] && cmp[i])
 	{

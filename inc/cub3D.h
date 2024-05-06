@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/06 18:39:18 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:50:20 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define HEIGHT 		1080
 # define WIDTH			1080
 
-# define MOVESPEED		0.125
-# define ROTSPEED		0.05
+# define MOVESPEED		0.07
+# define ROTSPEED		0.0125
 
 # define NORTH			0
 # define SOUTH			1
@@ -45,40 +45,39 @@
 // falta un int mapX, mapY que no se si hace falta
 typedef struct s_ray
 {
-	double	cameraX;
-	double	dirX;
-	double	dirY;
-	double	deltaX;
-	double	deltaY;
-	double	sideX;
-	double	sideY;
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	double	delta_x;
+	double	delta_y;
+	double	side_x;
+	double	side_y;
 	double	wall_dist;
-	double	wallX;
+	double	wall_x;
 	int		side;
-	int		mapX;
-	int		mapY;
-	int		stepX;
-	int		stepY;
-	int		lineH;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		line_h;
 	int		draw_start;
 	int		draw_end;
 }		t_ray;
 
-typedef	struct	s_player
+typedef struct s_player
 {
 	char	dir;
-	double	posX;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	planeX;
-	double	planeY;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	int		rotate;
 	int		move_x;
 	int		move_y;
 	int		has_moved;
 }		t_player;
-
 
 typedef struct s_map
 {
@@ -116,18 +115,6 @@ typedef struct s_img
 	int		height;
 }		t_img;
 
-// typedef struct s_text
-// {
-// 	void	*img;
-// 	char	*addr;
-// 	int		bpp;
-// 	int		line_len;
-// 	int		endian;
-// 	int		width;
-// 	int		height;
-// }	t_text;
-
-
 typedef struct s_data
 {
 	t_player	*p;
@@ -139,22 +126,10 @@ typedef struct s_data
 	t_img		text_img[4];
 	int			height;
 	int			width;
-	int			texX;
+	int			tex_x;
 	double		tex_pos;
 	double		tex_step;
 }		t_data;
-
-
-// void	init_texture_img(t_data *data, t_img *image, char *path);
-// void	ft_put_pixel(t_img *data, int x, int y, int color);
-// int		*xpm_to_img(t_data *data, char *path);
-// char	*get_next_line(int fd);
-// char	*ft_strjoin(char *ret, char *s2);
-// char	*ft_strchr(const char *s, int c);
-// size_t	ft_strlen(const char *s);
-// char	*ft_clean_buffer(char *data);
-// char	*ft_fill_data(char *data, int fd, int flag);
-// char	*ft_free(char **buffer);
 
 /*	INIT	*/
 /*	init_data.c	*/
@@ -191,34 +166,34 @@ int		ft_rotate_player(t_data *data, double rotate);
 
 /*	PARSE	*/
 /*	parse_info.c	*/
-void	ft_readfile(int fd, t_map *m, int j);
-int		ft_check_file(char *map, t_map *m);
+void	ft_readfile(t_data *data, int fd, t_map *m, int j);
+void	ft_check_file(t_data *data, char *map, t_map *m);
 char	*ft_get_fc(char *str, char c);
 int		ft_find_info(t_map *m, int j, int line_len);
-int		ft_parse_info(t_map *m);
+void	ft_parse_info(t_data *data, t_map *m);
 /*	parse_info2.c	*/
-char 	*ft_clean_paths(char *src);
-int		ft_check_texts(t_map *m);
-int		ft_check_rgb(t_map *m);
-/*	parse_map.c	*/
-void	ft_find_map_limits(t_map *m, int i);
+char	*ft_clean_paths(char *src);
+int		ft_check_texts(t_data *data, t_map *m);
+int		ft_check_rgb(t_data *data, t_map *m);
 char	*ft_get_map_line(char	*str, int width, int i, int j);
-int		ft_get_map(t_map *m, int *i);
+/*	parse_map.c	*/
+void	ft_find_map_limits(t_data *data, t_map *m, int i);
+void	ft_get_map(t_data *data, t_map *m, int *i, int aux);
 int		ft_check_map_spaces(t_map *m, int i, int j);
 int		ft_check_map_chars(t_map *m, int i, int j, int *player);
-int		ft_check_valid_map(t_map *m, int i, int j, int player);
+void	ft_check_valid_map(t_data *data, t_map *m, int i, int j);
 /*	parse_textures.c	*/
 
 /*	RENDER	*/
 /*	raycast.c	*/
 void	ft_init_raycast(t_ray *r, t_player *p, int x);
 void	ft_set_dda(t_ray *r, t_player *p);
-void	ft_perform_dda(t_map *m, t_ray *r);
+void	ft_perform_dda(t_map *m, t_ray *r, int hit);
 void	ft_calculate_length(t_data *data, t_ray *r);
-void	ft_set_tex_coord(t_data *data, t_ray *r, t_img *tex);
-void	ft_draw_line(t_data *data, t_ray *r, t_img *tex, int x);
 int		ft_raycasting(t_data *data);
 /*	render.c	*/
+void	ft_set_tex_coord(t_data *data, t_ray *r, t_img *tex);
+void	ft_draw_line(t_data *data, t_ray *r, t_img *tex, int x);
 int		ft_render(t_data *data);
 /*	textures.c	*/
 int		ft_convert_rgb_to_hex(int *rgb);
@@ -231,6 +206,7 @@ void	init_texture_img(t_data *data, t_img *image, char *path);
 void	ft_free_array(void **array);
 void	ft_free_tmap(t_map *m);
 void	ft_error(t_data *data, char *msg);
+void	ft_exit(t_data *data);
 /*	get_next_line_utils.c	*/
 char	*ft_substr_l(char *s, unsigned int start, size_t len);
 char	*ft_strchr_l(const char *s, int c);
@@ -242,12 +218,12 @@ char	*ft_clean_buffer(char *data);
 char	*ft_else(char **data, char **ret);
 char	*get_next_line(int fd);
 /*	print_utils.c	*/
-void ft_print_array(char **array, int i);
+void	ft_print_array(char **array, int i);
 void	ft_print_map_data(t_map *m);
 /*	utils_line.c	*/
 int		ft_count_lines(int fd);
 char	*ft_put_spaces(int width);
-char	*ft_trim_final_spaces(char *str, int j, int k);
+char	*ft_trim_final_spaces(t_data *data, char *str, int j, int k);
 char	*ft_clean_line(char *str);
 /*	utils_tabs.c	*/
 int		ft_count_tabs(char *line);

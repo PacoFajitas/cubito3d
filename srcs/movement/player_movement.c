@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:37:43 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/06 18:01:38 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:37:41 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,42 @@
 
 int	ft_move_player_up(t_data *data)
 {
-	double	newX;
-	double	newY;
+	double	new_x;
+	double	new_y;
 
-	newX = data->p->posX + data->p->dirX * MOVESPEED;
-	newY = data->p->posY + data->p->dirY * MOVESPEED;
-	return (ft_validate_move(data, newX, newY));
+	new_x = data->p->pos_x + data->p->dir_x * MOVESPEED;
+	new_y = data->p->pos_y + data->p->dir_y * MOVESPEED;
+	return (ft_validate_move(data, new_x, new_y));
 }
 
 int	ft_move_player_down(t_data *data)
 {
-	double	newX;
-	double	newY;
+	double	new_x;
+	double	new_y;
 
-	newX = data->p->posX - data->p->dirX * MOVESPEED;
-	newY = data->p->posY - data->p->dirY * MOVESPEED;
-	return (ft_validate_move(data, newX, newY));
+	new_x = data->p->pos_x - data->p->dir_x * MOVESPEED;
+	new_y = data->p->pos_y - data->p->dir_y * MOVESPEED;
+	return (ft_validate_move(data, new_x, new_y));
 }
 
 int	ft_move_player_left(t_data *data)
 {
-	double	newX;
-	double	newY;
+	double	new_x;
+	double	new_y;
 
-	newX = data->p->posX + data->p->dirY * MOVESPEED;
-	newY = data->p->posY - data->p->dirX * MOVESPEED;
-	return (ft_validate_move(data, newX, newY));
+	new_x = data->p->pos_x + data->p->dir_y * MOVESPEED;
+	new_y = data->p->pos_y - data->p->dir_x * MOVESPEED;
+	return (ft_validate_move(data, new_x, new_y));
 }
 
 int	ft_move_player_right(t_data *data)
 {
-	double	newX;
-	double	newY;
+	double	new_x;
+	double	new_y;
 
-	newX = data->p->posX - data->p->dirY * MOVESPEED;
-	newY = data->p->posY + data->p->dirX * MOVESPEED;
-	return (ft_validate_move(data, newX, newY));
+	new_x = data->p->pos_x - data->p->dir_y * MOVESPEED;
+	new_y = data->p->pos_y + data->p->dir_x * MOVESPEED;
+	return (ft_validate_move(data, new_x, new_y));
 }
 
 int	ft_move_player(t_data *data)

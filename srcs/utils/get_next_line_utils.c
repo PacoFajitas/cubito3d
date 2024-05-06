@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:44:01 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/04/03 16:43:09 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:46:28 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strchr_l(const char *s, int c)
 	int	i;
 
 	i = 0;
-	while (s[i] != '\0') 
+	while (s[i] != '\0')
 	{
 		if (s[i] == (unsigned char)c)
 			return ((char *)&s[i]);
@@ -62,14 +62,14 @@ char	*ft_strjoin_l(char *ret, char *s2)
 	i = 0;
 	j = 0;
 	str = (char *)malloc(ft_strlen(ret) + ft_strlen(s2) + 1);
-	if (!str) 
+	if (!str)
 		return (ft_free(&ret));
-	while (ret[i]) 
+	while (ret[i])
 	{
 		str[i] = ret[i];
 		i++;
 	}
-	while (s2[j]) 
+	while (s2[j])
 	{
 		str[i] = s2[j];
 		i++;

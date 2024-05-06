@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/05 20:44:55 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:21:42 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	ft_init_player(t_player *p)
 {
 	p->dir = '\0';
-	p->posX = 0.0;
-	p->posY = 0.0;
-	p->dirX = 0.0;
-	p->dirY = 0.0;
-	p->planeX = 0.0;
-	p->planeY = 0.0;
+	p->pos_x = 0.0;
+	p->pos_y = 0.0;
+	p->dir_x = 0.0;
+	p->dir_y = 0.0;
+	p->plane_x = 0.0;
+	p->plane_y = 0.0;
 	p->rotate = 0;
 	p->move_x = 0;
 	p->move_y = 0;
@@ -43,21 +43,21 @@ void	ft_init_map(t_data *data, t_map *m)
 
 void	ft_init_tray(t_ray *r)
 {
-	r->cameraX = 0.0;
-	r->deltaX = 0.0;
-	r->deltaY = 0.0;
-	r->dirX = 0.0;
-	r->dirY = 0.0;
-	r->sideX = 0.0;
-	r->sideY = 0.0;
+	r->camera_x = 0.0;
+	r->delta_x = 0.0;
+	r->delta_y = 0.0;
+	r->dir_x = 0.0;
+	r->dir_y = 0.0;
+	r->side_x = 0.0;
+	r->side_y = 0.0;
 	r->wall_dist = 0.0;
-	r->wallX = 0.0;
+	r->wall_x = 0.0;
 	r->side = 0;
-	r->mapX = 0;
-	r->mapY = 0;
-	r->stepX = 0;
-	r->stepY = 0;
-	r->lineH = 0;
+	r->map_x = 0;
+	r->map_y = 0;
+	r->step_x = 0;
+	r->step_y = 0;
+	r->line_h = 0;
 	r->draw_start = 0;
 	r->draw_end = 0;
 }
@@ -67,7 +67,7 @@ void	ft_init_tdata(t_data *data)
 	data->p = malloc(sizeof(t_player));
 	data->m = malloc(sizeof(t_map));
 	if (!data->m || !data->p)
-		ft_error(data, "Error");
+		ft_error(data, "Malloc error");
 	data->height = HEIGHT;
 	data->width = WIDTH;
 	data->mlx = NULL;

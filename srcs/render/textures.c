@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:46:16 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/06 18:36:45 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:36:04 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,11 @@ void	init_texture_img(t_data *data, t_img *image, char *path)
 	image->img = mlx_xpm_file_to_image(data->mlx, path, &image->width,
 			&image->height);
 	if (image->img == NULL)
-		ft_error(data, "Error");
+		ft_error(data, "Mlx error");
+	if (image->width != 64 || image->height != 64)
+		ft_error(data, "Wrong texture size");
 	image->addr = mlx_get_data_addr(image->img, &image->bpp,
 			&image->line_len, &image->endian);
 	if (image->addr == NULL)
-		ft_error(data, "Error");
+		ft_error(data, "Mlx error");
 }

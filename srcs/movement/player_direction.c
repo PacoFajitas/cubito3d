@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:38:10 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/06 17:29:40 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:22:46 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	ft_init_player_pos(t_player *p, int x, int y, char c)
 {
 	p->dir = c;
-	p->posX = x;
-	p->posY = y;
+	p->pos_x = x;
+	p->pos_y = y;
 	ft_init_player_dir(p);
 }
 
@@ -24,17 +24,17 @@ void	ft_init_player_dir_ns(t_player *p)
 {
 	if (p->dir == 'N')
 	{
-		p->dirX = 0;
-		p->dirY = -1;
-		p->planeX = 0.66;
-		p->planeY = 0;
+		p->dir_x = 0;
+		p->dir_y = -1;
+		p->plane_x = 0.66;
+		p->plane_y = 0;
 	}
 	else if (p->dir == 'S')
 	{
-		p->dirX = 0;
-		p->dirY = 1;
-		p->planeX = -0.66;
-		p->planeY = 0;
+		p->dir_x = 0;
+		p->dir_y = 1;
+		p->plane_x = -0.66;
+		p->plane_y = 0;
 	}
 }
 
@@ -44,16 +44,16 @@ void	ft_init_player_dir(t_player *p)
 		ft_init_player_dir_ns(p);
 	else if (p->dir == 'E')
 	{
-		p->dirX = 1;
-		p->dirY = 0;
-		p->planeX = 0;
-		p->planeY = 0.66;
+		p->dir_x = 1;
+		p->dir_y = 0;
+		p->plane_x = 0;
+		p->plane_y = 0.66;
 	}
 	else if (p->dir == 'W')
 	{
-		p->dirX = -1;
-		p->dirY = 0;
-		p->planeX = 0;
-		p->planeY = -0.66;
+		p->dir_x = -1;
+		p->dir_y = 0;
+		p->plane_x = 0;
+		p->plane_y = -0.66;
 	}
 }

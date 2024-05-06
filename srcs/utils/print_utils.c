@@ -6,13 +6,13 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:33:50 by meri              #+#    #+#             */
-/*   Updated: 2024/05/06 18:39:08 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 20:47:18 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "cub3D.h"
+#include "cub3D.h"
 
-void ft_print_array(char **array, int i)
+void	ft_print_array(char **array, int i)
 {
 	int	j;
 
@@ -56,9 +56,4 @@ void	ft_print_map_data(t_map *m)
 	if (m->c)
 		ft_putstr_fd(m->c, 1);
 	ft_putstr_fd("\n", 1);
-	ft_putstr_fd("data->height::", 1);
-	ft_putnbr_fd(m->height, 1);
-	ft_putstr_fd("\ndata->width::", 1);
-	ft_putnbr_fd(m->width, 1);
-	ft_putchar_fd('\n', 1);
 }

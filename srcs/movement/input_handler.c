@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:50:01 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/06 18:32:18 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 19:32:35 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_key_pressed(int key, t_data *data)
 {
 	if (key == ESC)
-		ft_error(data, NULL);
+		ft_exit(data);
 	if (key == LEFTK)
 		data->p->rotate = -1;
 	if (key == RIGHTK)
@@ -35,7 +35,7 @@ int	ft_key_pressed(int key, t_data *data)
 int	ft_key_released(int key, t_data *data)
 {
 	if (key == ESC)
-		ft_error(data, NULL);
+		ft_exit(data);
 	if (key == LEFTK && data->p->rotate <= 1)
 		data->p->rotate = 0;
 	if (key == RIGHTK && data->p->rotate >= -1)

@@ -6,19 +6,20 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 16:54:22 by meri              #+#    #+#             */
-/*   Updated: 2024/04/23 17:47:04 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:33:39 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-//	first two is to check if pos is valid in map
-//	last one is to check collision
 int	ft_valid_pos(t_data *data, double newX, double newY)
 {
-	if (newX <= MOVESPEED || newX >= data->m->width - MOVESPEED)
+	double	limit;
+
+	limit = 1.25;
+	if (newX < (limit * 2)|| newX >= data->m->width - limit)
 		return (0);
-	if (newY <= MOVESPEED || newY >= data->m->height - MOVESPEED)
+	if (newY < (limit * 2) || newY >= data->m->height - limit)
 		return (0);
 	if (data->m->map[(int)newY][(int)newX] == '0'
 		|| data->m->map[(int)newY][(int)newX] == data->p->dir)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:09:41 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/04/27 21:17:50 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:34:02 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,9 +124,7 @@ int	ft_find_info(t_map *m, int j, int line_len)
 int	ft_parse_info(t_map *m)
 {
 	int	i;
-//	int j;
-	
-//	j = 0;
+
 	i = ft_find_info(m, 0, 0);
 	if (i == 0)
 		return(0);

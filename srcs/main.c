@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:45:50 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/05 20:46:46 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:32:28 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 		return(1);
 	}
 	ft_init_mlx(&data);
-	listen_for_input(&data);
+	ft_listen_for_input(&data);
 	mlx_loop_hook(data.mlx, ft_render, &data);
 	mlx_loop(data.mlx);
 	// ft_print_map_data(&m);

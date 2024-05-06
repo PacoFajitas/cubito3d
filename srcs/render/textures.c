@@ -6,15 +6,23 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 18:46:16 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/05 21:07:48 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:36:45 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	convert_rgb_to_hex(int *rgb)
+int	ft_convert_rgb_to_hex(int *rgb)
 {
 	return ((rgb[0] << 16) + (rgb[1] << 8) + (rgb[2]));
+}
+
+void	ft_put_pixel(t_img *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
 }
 
 int	ft_get_tex_color(t_img *tex, int texX, int texY)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
+#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/04/30 15:41:49 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/05/06 18:31:57 by mlopez-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ INC_DIR		= inc
 LIB_DIR		= inc
 MKFL		= Makefile
 INIT_DIR	= init/
-MLX_UTILS	= mini_fun/
 MOV_DIR		= movement/
 PARSE_DIR	= parse/
 RENDER_DIR	= render/
@@ -33,7 +32,7 @@ MLX_DIR		= inc/mlx
 	MLX_CC		= -I/usr/include -I$(MLX_DIR)
 	LIB_M 		= $(LIB_DIR)/mlx/
 	
-# ----Libraryes----
+# ----Libraries----
 PW_HEADER	= $(INC_DIR)/cub3D.h
 LIB			= $(LIB_DIR)/libft/libft.a
 LIB_L 		= $(LIB_DIR)/libft/
@@ -47,10 +46,8 @@ CC = clang
 
 SRC_L	=	main.c												\
 
-SRC_L +=	$(addprefix $(MLX_UTILS), mlx_util.c)				\
-			$(addprefix $(INIT_DIR), init_data.c)				\
+SRC_L +=	$(addprefix $(INIT_DIR), init_data.c)				\
 			$(addprefix $(INIT_DIR), init_mlx.c)				\
-			$(addprefix $(INIT_DIR), init_textures.c)			\
 			$(addprefix $(MOV_DIR), input_handler.c)			\
 			$(addprefix $(MOV_DIR), player_direction.c)			\
 			$(addprefix $(MOV_DIR), player_movement.c)			\

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 11:43:25 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/03/27 20:18:16 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:42:06 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_fill_data(char *data, int fd, int flag)
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (ft_free(&data));
-	while (flag > 0 && !ft_strchr(data, '\n'))
+	while (flag > 0 && !ft_strchr_l(data, '\n'))
 	{
 		flag = read(fd, buffer, BUFFER_SIZE);
 		if (flag == -1)
@@ -37,12 +37,12 @@ char	*ft_fill_data(char *data, int fd, int flag)
 		buffer[flag] = '\0';
 		if (flag > 0)
 		{
-			data = ft_strjoin(data, buffer);
+			data = ft_strjoin_l(data, buffer);
 			if (!data)
 				return (ft_free(&buffer));
 		}
 	}
-	free (buffer);
+	free(buffer);
 	if ((data && ft_strlen(data) == 0) && flag == 0)
 		return (ft_free(&data));
 	return (data);
@@ -56,15 +56,15 @@ char	*ft_clean_buffer(char *data)
 	size_t	x;
 
 	len_og = ft_strlen(data);
-	if (!(ft_strchr(data, '\n') + 1))
+	if (!(ft_strchr_l(data, '\n') + 1))
 		return (NULL);
-	len_nl = ft_strlen(ft_strchr(data, '\n') + 1);
+	len_nl = ft_strlen(ft_strchr_l(data, '\n') + 1);
 	nl = (char *)malloc((len_nl + 1) * sizeof(char));
 	if (!nl)
 		return (ft_free(&data));
 	nl[len_nl] = '\0';
 	x = 0;
-	data = ft_strchr(data, '\n') + 1;
+	data = ft_strchr_l(data, '\n') + 1;
 	while (x < len_nl)
 	{
 		nl[x] = data[x];
@@ -79,10 +79,10 @@ char	*ft_clean_buffer(char *data)
 
 char	*ft_else(char **data, char **ret)
 {
-	if (ft_strchr(*data, '\n'))
+	if (ft_strchr_l(*data, '\n'))
 	{
-		*ret = ft_substr(*data, 0, ft_strlen(*data) - ft_strlen(ft_strchr
-					(*data, '\n')) + 1);
+		*ret = ft_substr_l(*data, 0, ft_strlen(*data) - ft_strlen
+					(ft_strchr_l(*data, '\n')) + 1);
 		if (!*ret)
 			return (ft_free(data));
 		*data = ft_clean_buffer(*data);

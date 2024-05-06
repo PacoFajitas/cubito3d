@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: meri <meri@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:37:43 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/01 18:43:58 by meri             ###   ########.fr       */
+/*   Updated: 2024/05/06 18:01:38 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,5 @@ int	ft_move_player(t_data *data)
 		moved += ft_move_player_left(data);
 	if (data->p->rotate != 0)
 		moved += ft_rotate_player(data, data->p->rotate);
-	//por que cojones funciona bien con esto aqui????????
-	usleep(20000);
 	return (moved);
 }

@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/05 20:45:50 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/06 18:39:18 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define HEIGHT 		1080
 # define WIDTH			1080
 
-# define MOVESPEED		0.0125
-# define ROTSPEED		0.015
+# define MOVESPEED		0.125
+# define ROTSPEED		0.05
 
 # define NORTH			0
 # define SOUTH			1
@@ -145,16 +145,16 @@ typedef struct s_data
 }		t_data;
 
 
-void	init_texture_img(t_data *data, t_img *image, char *path);
-void	ft_put_pixel(t_img *data, int x, int y, int color);
-int		*xpm_to_img(t_data *data, char *path);
-char	*get_next_line(int fd);
-char	*ft_strjoin(char *ret, char *s2);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-char	*ft_clean_buffer(char *data);
-char	*ft_fill_data(char *data, int fd, int flag);
-char	*ft_free(char **buffer);
+// void	init_texture_img(t_data *data, t_img *image, char *path);
+// void	ft_put_pixel(t_img *data, int x, int y, int color);
+// int		*xpm_to_img(t_data *data, char *path);
+// char	*get_next_line(int fd);
+// char	*ft_strjoin(char *ret, char *s2);
+// char	*ft_strchr(const char *s, int c);
+// size_t	ft_strlen(const char *s);
+// char	*ft_clean_buffer(char *data);
+// char	*ft_fill_data(char *data, int fd, int flag);
+// char	*ft_free(char **buffer);
 
 /*	INIT	*/
 /*	init_data.c	*/
@@ -166,15 +166,15 @@ void	ft_init_tdata(t_data *data);
 void	ft_init_start_img(t_img *img);
 void	ft_init_img(t_data *data, t_img *img);
 void	ft_init_mlx(t_data *data);
-/*	init_textures.c	*/
-void	ft_init_text_pixel(t_data *data);
+
 /*	MOVEMENT	*/
 /*	input_handler.c	*/
 int		ft_key_pressed(int key, t_data *data);
 int		ft_key_released(int key, t_data *data);
-void	listen_for_input(t_data *data);
+void	ft_listen_for_input(t_data *data);
 /*	player_direction.c	*/
 void	ft_init_player_pos(t_player *p, int x, int y, char c);
+void	ft_init_player_dir_ns(t_player *p);
 void	ft_init_player_dir(t_player *p);
 /*	player_movement.c	*/
 int		ft_move_player_up(t_data *data);
@@ -186,8 +186,8 @@ int		ft_move_player(t_data *data);
 int		ft_valid_pos(t_data *data, double newX, double newY);
 int		ft_validate_move(t_data *data, double newX, double newY);
 /*	player_rotate.c	*/
-int	ft_rotate_lr(t_data *data, double rotspeed);
-int	ft_rotate_player(t_data *data, double rotate);
+int		ft_rotate_lr(t_data *data, double rotspeed);
+int		ft_rotate_player(t_data *data, double rotate);
 
 /*	PARSE	*/
 /*	parse_info.c	*/
@@ -197,15 +197,17 @@ char	*ft_get_fc(char *str, char c);
 int		ft_find_info(t_map *m, int j, int line_len);
 int		ft_parse_info(t_map *m);
 /*	parse_info2.c	*/
-int		ft_check_rgb(t_map *m);
+char 	*ft_clean_paths(char *src);
 int		ft_check_texts(t_map *m);
+int		ft_check_rgb(t_map *m);
 /*	parse_map.c	*/
 void	ft_find_map_limits(t_map *m, int i);
 char	*ft_get_map_line(char	*str, int width, int i, int j);
 int		ft_get_map(t_map *m, int *i);
+int		ft_check_map_spaces(t_map *m, int i, int j);
+int		ft_check_map_chars(t_map *m, int i, int j, int *player);
 int		ft_check_valid_map(t_map *m, int i, int j, int player);
 /*	parse_textures.c	*/
-int	convert_rgb_to_hex(int *rgb);
 
 /*	RENDER	*/
 /*	raycast.c	*/
@@ -213,24 +215,34 @@ void	ft_init_raycast(t_ray *r, t_player *p, int x);
 void	ft_set_dda(t_ray *r, t_player *p);
 void	ft_perform_dda(t_map *m, t_ray *r);
 void	ft_calculate_length(t_data *data, t_ray *r);
+void	ft_set_tex_coord(t_data *data, t_ray *r, t_img *tex);
+void	ft_draw_line(t_data *data, t_ray *r, t_img *tex, int x);
 int		ft_raycasting(t_data *data);
 /*	render.c	*/
-void	ft_set_image_pixel(t_img *image, int x, int y, int color);
-void	ft_set_frame_image_pixel(t_data *data, t_img *img, int x, int y);
-void	ft_render_frame(t_data *data);
-void	ft_render_raycast(t_data *data);
 int		ft_render(t_data *data);
 /*	textures.c	*/
+int		ft_convert_rgb_to_hex(int *rgb);
+void	ft_put_pixel(t_img *data, int x, int y, int color);
 int		ft_get_tex_color(t_img *tex, int texX, int texY);
-void	ft_get_texture_index(t_data *data, t_ray *r);
+void	init_texture_img(t_data *data, t_img *image, char *path);
 
 /*	UTILS	*/
 /*	errors.c	*/
 void	ft_free_array(void **array);
 void	ft_free_tmap(t_map *m);
 void	ft_error(t_data *data, char *msg);
+/*	get_next_line_utils.c	*/
+char	*ft_substr_l(char *s, unsigned int start, size_t len);
+char	*ft_strchr_l(const char *s, int c);
+char	*ft_strjoin_l(char *ret, char *s2);
+/*	get_next_line.c	*/
+char	*ft_free(char **buffer);
+char	*ft_fill_data(char *data, int fd, int flag);
+char	*ft_clean_buffer(char *data);
+char	*ft_else(char **data, char **ret);
+char	*get_next_line(int fd);
 /*	print_utils.c	*/
-void 	ft_print_array(char **array, int i);
+void ft_print_array(char **array, int i);
 void	ft_print_map_data(t_map *m);
 /*	utils_line.c	*/
 int		ft_count_lines(int fd);

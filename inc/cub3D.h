@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/06 20:50:20 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:52:50 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,8 @@ typedef struct s_data
 	double		tex_step;
 }		t_data;
 
+void ft_print_pointers(t_data *data, int fd);
+
 /*	INIT	*/
 /*	init_data.c	*/
 void	ft_init_player(t_player *p);
@@ -173,7 +175,6 @@ int		ft_find_info(t_map *m, int j, int line_len);
 void	ft_parse_info(t_data *data, t_map *m);
 /*	parse_info2.c	*/
 char	*ft_clean_paths(char *src);
-int		ft_check_texts(t_data *data, t_map *m);
 int		ft_check_rgb(t_data *data, t_map *m);
 char	*ft_get_map_line(char	*str, int width, int i, int j);
 /*	parse_map.c	*/
@@ -183,6 +184,7 @@ int		ft_check_map_spaces(t_map *m, int i, int j);
 int		ft_check_map_chars(t_map *m, int i, int j, int *player);
 void	ft_check_valid_map(t_data *data, t_map *m, int i, int j);
 /*	parse_textures.c	*/
+int		ft_check_texts(t_data *data, t_map *m);
 
 /*	RENDER	*/
 /*	raycast.c	*/

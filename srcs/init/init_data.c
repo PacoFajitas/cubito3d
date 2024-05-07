@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/06 20:21:42 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/07 22:47:52 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ft_init_map(t_data *data, t_map *m)
 	m->ea = NULL;
 	m->f = NULL;
 	m->c = NULL;
-	m->map = NULL;
 	m->height = 0;
 	m->width = 0;
 	m->p = data->p;

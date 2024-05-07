@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:51:30 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/06 20:32:47 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/07 21:52:21 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,6 @@ char	*ft_clean_paths(char *src)
 	if (!dst)
 		return (NULL);
 	return (dst);
-}
-
-int	ft_check_texts(t_data *data, t_map *m)
-{
-	m->no = ft_strtrim(m->no, " ");
-	m->so = ft_strtrim(m->so, " ");
-	m->we = ft_strtrim(m->we, " ");
-	m->ea = ft_strtrim(m->ea, " ");
-	if (!m->no || !m->so || !m->we || !m->ea)
-		ft_error(data, "Malloc error");
-	m->no = ft_clean_paths(m->no);
-	m->so = ft_clean_paths(m->so);
-	m->we = ft_clean_paths(m->we);
-	m->ea = ft_clean_paths(m->ea);
-	if (!m->no || !m->so || !m->we || !m->ea)
-		ft_error(data, "Malloc error");
-	if (access(m->no, F_OK) == -1 || access(m->so, F_OK) == -1
-		|| access(m->we, F_OK) == -1 || access(m->ea, F_OK) == -1)
-		return (0);
-	return (1);
 }
 
 int	ft_check_rgb(t_data *data, t_map *m)

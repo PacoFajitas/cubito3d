@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:42:21 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/07 22:53:10 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/07 23:08:11 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ void	ft_free_array(void **array)
 //	frees t_map
 void	ft_free_tmap(t_map *m)
 {
-	if (m->map && m->map != NULL)
+	if (m->map != NULL)
 		ft_free_array((void **)m->map);
-	if (m->file && m->file != NULL)
+	if (m->file != NULL)
 		ft_free_array((void **)m->file);
 	if (m->no)
 		free(m->no);
@@ -98,17 +98,17 @@ void	ft_error(t_data *data, char *msg)
 
 void	ft_exit(t_data *data)
 {
-	if (data->m)
+	if (data->m != NULL)
 	{
 		ft_free_tmap(data->m);
-		data->m = NULL;
+		// data->m = NULL;
 	}
 	if (data->p)
 	{
 		free(data->p);
 		data->p = NULL;
 	}
-	if (data->win)
+	if (data->win != NULL)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 		free(data->mlx);

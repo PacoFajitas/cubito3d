@@ -6,7 +6,7 @@
 /*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:08:27 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/07 22:47:52 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/07 23:08:21 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_init_map(t_data *data, t_map *m)
 	m->ea = NULL;
 	m->f = NULL;
 	m->c = NULL;
+	m->map = NULL;
+	m->file = NULL;
 	m->height = 0;
 	m->width = 0;
 	m->p = data->p;
@@ -63,14 +65,16 @@ void	ft_init_tray(t_ray *r)
 
 void	ft_init_tdata(t_data *data)
 {
-	data->p = malloc(sizeof(t_player));
-	data->m = malloc(sizeof(t_map));
-	if (!data->m || !data->p)
-		ft_error(data, "Malloc error");
 	data->height = HEIGHT;
 	data->width = WIDTH;
 	data->mlx = NULL;
 	data->win = NULL;
+	data->p = malloc(sizeof(t_player));
+	if (!data->p)
+		ft_error(data, "Malloc error");
+	data->m = malloc(sizeof(t_map));
+	if (!data->m)
+		ft_error(data, "Malloc error");
 	ft_init_player(data->p);
 	ft_init_map(data, data->m);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
+#    By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/05/07 23:08:42 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/05/08 18:59:30 by mlopez-i         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIB_L 		= $(LIB_DIR)/libft/
 # -------------
 RM = rm -rf
 MP = mkdir -p
-CFLAGS = -g -Wall -Wextra -Werror #-fsanitize=address
+CFLAGS = -g -Wall -Wextra -Werror -fsanitize=address
 LIBC = ar -rcs
 CC = clang
 # =============
@@ -53,9 +53,10 @@ SRC_L +=	$(addprefix $(INIT_DIR), init_data.c)				\
 			$(addprefix $(MOV_DIR), player_movement.c)			\
 			$(addprefix $(MOV_DIR), player_position.c)			\
 			$(addprefix $(MOV_DIR), player_rotate.c)			\
-			$(addprefix $(PARSE_DIR), parse_map.c)				\
 			$(addprefix $(PARSE_DIR), parse_info.c)				\
 			$(addprefix $(PARSE_DIR), parse_info2.c)			\
+			$(addprefix $(PARSE_DIR), parse_map.c)				\
+			$(addprefix $(PARSE_DIR), parse_map2.c)				\
 			$(addprefix $(PARSE_DIR), parse_textures.c)			\
 			$(addprefix $(RENDER_DIR), raycast.c)				\
 			$(addprefix $(RENDER_DIR), render.c)				\

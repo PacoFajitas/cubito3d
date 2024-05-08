@@ -3,14 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:51:30 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/07 21:52:21 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/08 18:55:48 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+char	*ft_save_info(t_data *data, char *dir, char *info, int line_len)
+{
+	if (dir == NULL)
+		return (ft_substr(info, 0, line_len));
+	else
+		ft_error(data, "Duplicate info");
+	return (NULL);
+}
+
+int	ft_is_valid_line(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line && line[i])
+	{
+		if (line[i] != ' ' && line[i] != '\n' && line[i] != 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 char	*ft_clean_paths(char *src)
 {

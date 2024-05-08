@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:09:41 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/06 20:31:04 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/08 17:43:46 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ void	ft_check_file(t_data *data, char *map, t_map *m)
 	close(fd);
 }
 
-char	*ft_get_fc(char *str, char c)
+char	*ft_get_fc(t_data *data, char *dir, char *str, char c)
 {
 	int		i;
 	int		j;
 	char	*ret;
 
+	if (dir != NULL)
+		ft_error(data, "Duplicate info");
 	i = 0;
 	j = 0;
 	if (str[i] && str[i] == c)
@@ -79,24 +81,28 @@ char	*ft_get_fc(char *str, char c)
 	return (ret);
 }
 
-int	ft_find_info(t_map *m, int j, int line_len)
+
+
+int	ft_find_info(t_data *data, t_map *m, int j, int line_len)
 {
 	while (m->file[j])
 	{
 		m->file[j] = ft_clean_line(m->file[j]);
 		line_len = ft_strlen(m->file[j]);
 		if (!ft_strncmp(m->file[j], "NO", 2))
-			m->no = ft_substr(m->file[j], 0, line_len);
+			m->no = ft_save_info(data, m->no, m->file[j], line_len);
 		else if (!ft_strncmp(m->file[j], "SO", 2))
-			m->so = ft_substr(m->file[j], 0, line_len);
+			m->so = ft_save_info(data, m->so, m->file[j], line_len);
 		else if (!ft_strncmp(m->file[j], "WE", 2))
-			m->we = ft_substr(m->file[j], 0, line_len);
+			m->we = ft_save_info(data, m->we, m->file[j], line_len);
 		else if (!ft_strncmp(m->file[j], "EA", 2))
-			m->ea = ft_substr(m->file[j], 0, line_len);
+			m->ea = ft_save_info(data, m->ea, m->file[j], line_len);
 		else if (!ft_strncmp(m->file[j], "F", 1))
-			m->f = ft_get_fc(m->file[j], 'F');
+			m->f = ft_get_fc(data, m->f, m->file[j], 'F');
 		else if (!ft_strncmp(m->file[j], "C", 1))
-			m->c = ft_get_fc(m->file[j], 'C');
+			m->c = ft_get_fc(data, m->c, m->file[j], 'C');
+		else if (!ft_is_valid_line(m->file[j]))
+			return (0);
 		j++;
 		if (m->no && m->so && m->we && m->ea && m->f && m->c)
 			break ;
@@ -110,9 +116,9 @@ void	ft_parse_info(t_data *data, t_map *m)
 {
 	int	i;
 
-	i = ft_find_info(m, 0, 0);
+	i = ft_find_info(data, m, 0, 0);
 	if (i == 0)
-		ft_error(data, "Couldn't find info");
+		ft_error(data, "Couldn't find info/Wrong info");
 	if (!ft_check_rgb(data, m))
 		ft_error(data, "RGB format error");
 	if (!ft_check_texts(data, m))

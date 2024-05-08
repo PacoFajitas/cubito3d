@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/07 21:52:50 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/08 18:07:50 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,10 +170,12 @@ int		ft_rotate_player(t_data *data, double rotate);
 /*	parse_info.c	*/
 void	ft_readfile(t_data *data, int fd, t_map *m, int j);
 void	ft_check_file(t_data *data, char *map, t_map *m);
-char	*ft_get_fc(char *str, char c);
-int		ft_find_info(t_map *m, int j, int line_len);
+char	*ft_get_fc(t_data *data, char *dir, char *str, char c);
+int		ft_find_info(t_data *data, t_map *m, int j, int line_len);
 void	ft_parse_info(t_data *data, t_map *m);
 /*	parse_info2.c	*/
+char	*ft_save_info(t_data *data, char *dir, char *info, int line_len);
+int		ft_is_valid_line(char *line);
 char	*ft_clean_paths(char *src);
 int		ft_check_rgb(t_data *data, t_map *m);
 char	*ft_get_map_line(char	*str, int width, int i, int j);
@@ -183,6 +185,8 @@ void	ft_get_map(t_data *data, t_map *m, int *i, int aux);
 int		ft_check_map_spaces(t_map *m, int i, int j);
 int		ft_check_map_chars(t_map *m, int i, int j, int *player);
 void	ft_check_valid_map(t_data *data, t_map *m, int i, int j);
+/*	parse_map2.c	*/
+void	ft_more_boards(t_data *data, t_map *m, int i);
 /*	parse_textures.c	*/
 int		ft_check_texts(t_data *data, t_map *m);
 

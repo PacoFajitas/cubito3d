@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 20:42:21 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/07 23:08:11 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/08 17:02:48 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_free_array(void **array)
 	i = 0;
 	while (array && array[i])
 	{
-		printf("freeing array[%d]\n", i);
+		// printf("freeing array[%d]\n", i);
 		free(array[i]);
 		i++;
 	}

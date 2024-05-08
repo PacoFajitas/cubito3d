@@ -6,7 +6,7 @@
 /*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 14:46:35 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/08 18:07:50 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/08 19:51:19 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define WIDTH			1080
 
 # define MOVESPEED		0.07
-# define ROTSPEED		0.0125
+# define ROTSPEED		0.05
 
 # define NORTH			0
 # define SOUTH			1

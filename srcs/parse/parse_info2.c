@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:51:30 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/08 19:06:17 by tfiguero         ###   ########.fr       */
+/*   Updated: 2024/05/08 20:22:07 by mlopez-i         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_check_if_3(t_data *data, char **color)
 		j = 0;
 		while (color[i][j])
 		{
-			if (!ft_isdigit(color[i][j]))
+			if (!ft_isdigit(color[i][j]) && color[i][j] != ' ')
 				ft_error(data, "Invalid color");
 			j++;
 		}

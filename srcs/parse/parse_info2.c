@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:51:30 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/08 18:55:48 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/08 19:06:17 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,35 @@ char	*ft_clean_paths(char *src)
 	return (dst);
 }
 
+int	ft_check_if_3(t_data *data, char **color)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (color[i])
+	{
+		j = 0;
+		while (color[i][j])
+		{
+			if (!ft_isdigit(color[i][j]))
+				ft_error(data, "Invalid color");
+			j++;
+		}
+		i++;
+	}
+	if (i != 3)
+		ft_error(data, "Invalid color");
+	return (1);
+
+}
+
 int	ft_check_rgb(t_data *data, t_map *m)
 {
 	char	**c;
 
 	c = ft_split(m->f, ',');
-	if (!c)
+	if (!ft_check_if_3(data, c))
 		ft_error(data, "Malloc error");
 	m->f_rgb[0] = ft_atoi(c[0]);
 	m->f_rgb[1] = ft_atoi(c[1]);
@@ -79,7 +102,7 @@ int	ft_check_rgb(t_data *data, t_map *m)
 		|| m->f_rgb[2] < 0 || m->f_rgb[2] > 255)
 		return (0);
 	c = ft_split(m->c, ',');
-	if (!c)
+	if (!ft_check_if_3(data, c))
 		ft_error(data, "Malloc error");
 	m->c_rgb[0] = ft_atoi(c[0]);
 	m->c_rgb[1] = ft_atoi(c[1]);

@@ -1,9 +1,9 @@
 NO txtures/pedro_map/pedro1.xpm
 SO txtures/pedro_map/pedro2.xpm
-WE txtures/warcat_map/warcat5.xpm
+WE txtures/warcat_map/warcat2.xpm
 EA txtures/pedro_map/pedro4.xpm
 F 88,57,39
-C 58,58,58
+C 100,,,,,100,100
 
 1111111111111111111
 10000000000000000N1

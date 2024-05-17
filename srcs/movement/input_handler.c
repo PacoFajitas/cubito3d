@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 19:50:01 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/08 17:03:34 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:45:39 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	ft_key_pressed(int key, t_data *data)
 		data->p->move_y = -1;
 	if (key == D)
 		data->p->move_x = 1;
-	// ft_print_array(data->m->map, 0);
 	return (0);
 }
 

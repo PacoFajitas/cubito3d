@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:09:41 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/08 17:43:46 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/08 21:45:22 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ char	*ft_get_fc(t_data *data, char *dir, char *str, char c)
 	ret[j] = '\0';
 	return (ret);
 }
-
-
 
 int	ft_find_info(t_data *data, t_map *m, int j, int line_len)
 {

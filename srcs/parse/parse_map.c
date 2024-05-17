@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 21:05:03 by mlopez-i          #+#    #+#             */
-/*   Updated: 2024/05/08 18:50:59 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:26:59 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,27 +69,15 @@ void	ft_get_map(t_data *data, t_map *m, int *i, int aux)
 int	ft_check_map_spaces(t_map *m, int i, int j)
 {
 	if (i > 0 && (m->map[i - 1][j] != ' ' && m->map[i - 1][j] != '1'))
-	{
-		// printf("he entrado en el if1 en i:: %d j::%d y el map[i][j] es: %c\n", i, j, m->map[i][j]);
 		return (0);
-	}
-	if (i < m->height - 1 && (m->map[i + 1][j] != ' ' && m->map[i + 1][j] != '1'))
-	{
-		// printf("he entrado en el if2 en i:: %d j::%d y el map[i][j] es: %c\n", i, j, m->map[i][j]);
+	if (i < m->height - 1 && (m->map[i + 1][j] != ' '
+		&& m->map[i + 1][j] != '1'))
 		return (0);
-	}
 	if (j > 0 && (m->map[i][j - 1] != ' ' && m->map[i][j - 1] != '1'))
-	{
-		// printf("he entrado en el if3 en i:: %d j::%d y el map[i][j] es: %c\n", i, j, m->map[i][j]);
 		return (0);
-	}
-	if (j < m->width - 1 && (m->map[i][j + 1] != ' ' && m->map[i][j + 1] != '1'))
-	{
-		// printf("he entrado en el if4 en i:: %d j::%d y el map[i][j] es: %c\n", i, j, m->map[i][j]);
+	if (j < m->width - 1 && (m->map[i][j + 1] != ' '
+		&& m->map[i][j + 1] != '1'))
 		return (0);
-	}
-	// printf("no he entrado en ningun if en: i: %d, j: %d y el map[i][j] es: %c\n", i, j, m->map[i][j]);
-	// ft_print_array(m->map, 0);
 	return (1);
 }
 
@@ -118,7 +106,6 @@ void	ft_check_valid_map(t_data *data, t_map *m, int i, int j)
 	while (i < m->height)
 	{
 		j = 0;
-		// printf("m->width: %d\n", m->width);
 		while (j < m->width)
 		{
 			if (m->map[i][j] == ' ')

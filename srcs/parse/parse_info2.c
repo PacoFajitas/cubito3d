@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_info2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mlopez-i <mlopez-i@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 19:51:30 by tfiguero          #+#    #+#             */
-/*   Updated: 2024/05/08 20:25:26 by mlopez-i         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:25:01 by tfiguero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,34 +35,6 @@ int	ft_is_valid_line(char *line)
 	return (1);
 }
 
-char	*ft_clean_paths(char *src)
-{
-	char	*dst;
-	int		i;
-
-	i = 0;
-	while (src[0] && i < 2)
-	{
-		src++;
-		i++;
-	}
-	while (src[0] && src[0] == ' ')
-	{
-		i++;
-		src++;
-	}
-	dst = ft_strdup(src);
-	while (i > 0)
-	{
-		src--;
-		i--;
-	}
-	free(src);
-	if (!dst)
-		return (NULL);
-	return (dst);
-}
-
 int	ft_check_if_3(t_data *data, char **color)
 {
 	int	i;
@@ -83,7 +55,6 @@ int	ft_check_if_3(t_data *data, char **color)
 	if (i != 3)
 		ft_error(data, "Invalid color");
 	return (1);
-
 }
 
 int	ft_check_rgb(t_data *data, t_map *m)

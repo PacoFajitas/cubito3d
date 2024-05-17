@@ -6,7 +6,7 @@
 #    By: tfiguero <tfiguero@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/27 14:34:20 by tfiguero          #+#    #+#              #
-#    Updated: 2024/05/17 13:56:04 by tfiguero         ###   ########.fr        #
+#    Updated: 2024/05/17 17:42:42 by tfiguero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ LIB_L 		= $(LIB_DIR)/libft/
 # -------------
 RM = rm -rf
 MP = mkdir -p
-CFLAGS = -g -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -g -Wall -Wextra -Werror #-fsanitize=address
 LIBC = ar -rcs
 CC = clang
 # =============
